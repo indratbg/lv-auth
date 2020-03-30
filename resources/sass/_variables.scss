@@ -1,0 +1,27 @@
+// Body
+$body-bg: #00f2fe;
+//custom font
+$font-family-sans-serif: // Safari for OS X and iOS (San Francisco)
+// Android "Roboto",
+// Basic web fallback "Helvetica Neue", Arial,
+sans-serif,
+// Emoji fonts
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol" !default;
+// Typography
+// $font-family-sans-serif: 'Nunito',
+// sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.3;
+// Colors
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #28a745;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
