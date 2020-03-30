@@ -2136,18 +2136,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ListNews",
   created: function created() {
     this.getNews();
+    this.getTopTenNews();
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     listNews: function listNews(state) {
-      return state.news.listNews;
+      return state.news.listNews.data;
+    },
+    currentPage: function currentPage(state) {
+      return state.news.listNews.current_page;
+    },
+    lastPage: function lastPage(state) {
+      return state.news.listNews.last_page;
+    },
+    topTenNews: function topTenNews(state) {
+      return state.news.topTenNews;
     }
   }),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("news", ["getNews"]))
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("news", ["getNews", "getTopTenNews"]), {
+    loadMore: function loadMore() {
+      this.getNews();
+    }
+  })
 });
 
 /***/ }),
@@ -2168,6 +2187,9 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
 //
 //
 //
@@ -37986,7 +38008,26 @@ var render = function() {
           _vm._v(" "),
           _c("br"),
           _vm._v(" "),
-          _vm._m(0)
+          _vm.currentPage != _vm.lastPage
+            ? _c("div", { staticClass: "form-group text-center" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-block btn-success",
+                    attrs: { disabled: _vm.currentPage == _vm.lastPage },
+                    on: {
+                      click: function($event) {
+                        return _vm.loadMore()
+                      }
+                    }
+                  },
+                  [
+                    _c("i", { staticClass: "fa fa-spinner" }),
+                    _vm._v("\n          Load More\n        ")
+                  ]
+                )
+              ])
+            : _vm._e()
         ],
         2
       ),
@@ -38001,9 +38042,9 @@ var render = function() {
                 _vm._v("News Recently")
               ]),
               _vm._v(" "),
-              _vm._m(1),
+              _vm._m(0),
               _vm._v(" "),
-              _vm._l(_vm.listNews, function(news) {
+              _vm._l(_vm.topTenNews, function(news) {
                 return _c(
                   "ul",
                   { key: news.id, staticClass: "list-group list-group-flush" },
@@ -38046,24 +38087,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group text-center" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-block btn-success",
-          attrs: { onclick: "loadMore()" }
-        },
-        [
-          _c("i", { staticClass: "fa fa-spinner" }),
-          _vm._v(" Load More\n        ")
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
       _c("input", {
         staticClass: "form-control",
@@ -38101,7 +38124,22 @@ var render = function() {
       _vm._v("\n    " + _vm._s(_vm.detail.updated_at) + "\n  ")
     ]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.detail.body))])
+    _c("p", [_vm._v(_vm._s(_vm.detail.body))]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-primary",
+          on: {
+            click: function($event) {
+              return _vm.$router.go(-1)
+            }
+          }
+        },
+        [_vm._v("Back")]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -54995,19 +55033,23 @@ var state = function state() {
   return {
     listNews: [],
     page: 1,
-    detailNews: []
+    detailNews: [],
+    topTenNews: []
   };
 };
 
 var mutations = {
   ASSIGN_DATA: function ASSIGN_DATA(state, payload) {
-    state.listNews = payload.data;
+    state.listNews = payload;
   },
   SET_PAGE: function SET_PAGE(state, payload) {
     state.page = payload;
   },
   DETAIL_NEWS: function DETAIL_NEWS(state, payload) {
     state.detailNews = payload.data;
+  },
+  TOP_TEN_NEWS: function TOP_TEN_NEWS(state, payload) {
+    state.topTenNews = payload;
   }
 };
 var actions = {
@@ -55017,6 +55059,11 @@ var actions = {
     return new Promise(function (resolve, reject) {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("/news?page=".concat(state.page)).then(function (response) {
         commit('ASSIGN_DATA', response.data);
+
+        if (response.data && response.data.current_page < response.data.last_page) {
+          commit('SET_PAGE', response.data.current_page + 1);
+        }
+
         resolve(response.data);
       });
     });
@@ -55027,6 +55074,16 @@ var actions = {
     return new Promise(function (resolve, reject) {
       _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("/news/".concat(payload.post_date, "/").concat(payload.title)).then(function (response) {
         commit('DETAIL_NEWS', response);
+        resolve(response);
+      });
+    });
+  },
+  getTopTenNews: function getTopTenNews(_ref3, payload) {
+    var commit = _ref3.commit,
+        state = _ref3.state;
+    return new Promise(function (resolve, reject) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].get("/news/topten").then(function (response) {
+        commit('TOP_TEN_NEWS', response.data);
         resolve(response);
       });
     });

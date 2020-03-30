@@ -6,6 +6,9 @@
       {{ detail.updated_at}}
     </small>
     <p>{{detail.body}}</p>
+    <div class="form-group">
+      <button class="btn btn-outline-primary" @click="$router.go(-1)">Back</button>
+    </div>
   </div>
 </template>
 <script>

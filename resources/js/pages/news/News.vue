@@ -17,9 +17,14 @@
           </div>
         </div>
         <br />
-        <div class="form-group text-center">
-          <button class="btn btn-block btn-success" onclick="loadMore()">
-            <i class="fa fa-spinner"></i> Load More
+        <div class="form-group text-center" v-if="currentPage!=lastPage">
+          <button
+            class="btn btn-block btn-success"
+            v-on:click="loadMore()"
+            :disabled="currentPage==lastPage"
+          >
+            <i class="fa fa-spinner"></i>
+            Load More
           </button>
         </div>
       </div>
@@ -30,7 +35,7 @@
             <div class="form-group">
               <input type="search" class="form-control" placeholder="Search" />
             </div>
-            <ul class="list-group list-group-flush" v-for="news in listNews" :key="news.id">
+            <ul class="list-group list-group-flush" v-for="news in topTenNews" :key="news.id">
               <li class="list-group-item">
                 <router-link
                   :to="{ name:'viewnews', params:{post_date:news.post_date,title:news.title}} "
@@ -49,12 +54,19 @@ export default {
   name: "ListNews",
   created() {
     this.getNews();
+    this.getTopTenNews();
   },
   computed: mapState({
-    listNews: state => state.news.listNews
+    listNews: state => state.news.listNews.data,
+    currentPage: state => state.news.listNews.current_page,
+    lastPage: state => state.news.listNews.last_page,
+    topTenNews: state => state.news.topTenNews
   }),
   methods: {
-    ...mapActions("news", ["getNews"])
+    ...mapActions("news", ["getNews", "getTopTenNews"]),
+    loadMore() {
+      this.getNews();
+    }
   }
 };
 </script>

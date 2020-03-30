@@ -28,9 +28,9 @@ Route::group(['middleware' => ['auth:api']], function () {
 });
 
 //News
-// Route::resource('/news', 'API\NewsController');
 Route::group(['prefix' => 'news'], function () {
 
     Route::get('/', 'API\NewsController@index');
+    Route::get('/topten', 'API\NewsController@topNews');
     Route::get('/{post_date}/{title}', 'API\NewsController@show');
 });

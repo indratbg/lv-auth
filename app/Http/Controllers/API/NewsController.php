@@ -13,6 +13,12 @@ class NewsController extends Controller
     {
         return response()->json(News::paginate());
     }
+
+    public function topNews()
+    {
+        return News::all()->take(10);
+    }
+
     public function show($post_date, $title)
     {
 
