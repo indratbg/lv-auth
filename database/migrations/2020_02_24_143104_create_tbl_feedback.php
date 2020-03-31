@@ -15,7 +15,9 @@ class CreateTblFeedback extends Migration
     {
         Schema::create('tbl_feedback', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('subject');
+            $table->string('name', 50);
+            $table->string('subject', 50);
+            $table->string('email', 50);
             $table->text('body');
             $table->timestamps();
         });

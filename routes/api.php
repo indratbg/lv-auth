@@ -34,3 +34,6 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/topten', 'API\NewsController@topNews');
     Route::get('/{post_date}/{title}', 'API\NewsController@show');
 });
+
+//Feedback
+Route::post('/feedback', 'API\FeedbackController@store');
