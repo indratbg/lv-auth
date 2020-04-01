@@ -35,6 +35,7 @@ const actions = {
                         commit('ERROR', error.response.data.errors)
                     }
                     commit('SUCCESS', "");
+                    reject(error)
                 })
         })
     }

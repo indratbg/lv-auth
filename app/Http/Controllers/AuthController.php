@@ -12,7 +12,6 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
-
         $http = new Client;
 
         try {
@@ -21,7 +20,7 @@ class AuthController extends Controller
                     'grant_type' => 'password',
                     'client_id' => config('services.passport.client_id'),
                     'client_secret' => config('services.passport.client_secret'),
-                    'username' => $request->username,
+                    'username' => $request->email,
                     'password' => $request->password,
                 ]
             ]);
@@ -43,14 +42,16 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|required_with:password_confirmation|same:password_confirmation',
+            'password_confirmation' => 'required|min:6'
         ]);
-
-        return User::create([
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        return  response()->json(['success' => 'User successfully registered'], 200);
     }
     public function logout()
     {

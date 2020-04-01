@@ -33,10 +33,27 @@
             </router-link>
           </li>
         </ul>
+        <ul class="navbar-nav mt-2 mt-lg-0 pull-right">
+          <li class="nav-item">
+            <router-link v-if="!isLogin" class="nav-link" :to="{ name: 'register' }">Register</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link v-if="!isLogin" class="nav-link" :to="{ name: 'login' }">Login</router-link>
+            <router-link v-if="isLogin" class="nav-link" :to="{name:'logout'}">Logout</router-link>
+          </li>
+        </ul>
       </div>
     </nav>
   </div>
 </template>
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters(["loggedIn"]),
+    isLogin() {
+      return this.loggedIn;
+    }
+  }
+};
 </script>
