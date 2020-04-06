@@ -10,7 +10,9 @@
           <div class="card">
             <img class="card-img-top rounded" src="https://placekitten.com/300/250" alt />
             <div class="pl-2 pt-2">
-              <b>{{ product.product}}</b>
+              <router-link :to="{name:'products.view',params:{'id':product.id} }" class="btn-link">
+                <b>{{ product.product}}</b>
+              </router-link>
               <br />
               <b class="text text-danger">Rp.{{ formatNumber(product.price) }}</b>
               <form action method="post">
@@ -76,8 +78,6 @@ export default {
   name: "ProductsList",
   created() {
     this.getProducts();
-    console.log(window.document.documentElement.lang);
-    console.log(parseFloat("1234567").toLocaleString());
   },
   computed: {
     ...mapState({

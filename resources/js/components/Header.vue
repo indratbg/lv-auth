@@ -89,10 +89,7 @@ export default {
         });
       }
       return authUser;
-    },
-    ...mapState({
-      auth: state => state.user.auth
-    })
+    }
   },
   methods: {
     ...mapActions("user", ["getUserDetail"])

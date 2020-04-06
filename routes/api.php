@@ -39,6 +39,7 @@ Route::group(['prefix' => 'news'], function () {
 Route::group(['prefix' => 'products'], function () {
 
     Route::get('/', 'API\ProductsController@index');
+    Route::get('/{id}', 'API\ProductsController@show');
 });
 
 //Feedback

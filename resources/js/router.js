@@ -23,6 +23,7 @@ import Security from './pages/user/Security.vue';
 //Products
 import Products from './pages/products/Products.vue';
 import Productslist from './pages/products/Productslist.vue';
+import Productsview from './pages/products/View.vue';
 
 Vue.use(Router);
 
@@ -52,11 +53,23 @@ const router = new Router({
             path: '/products',
             component: Products,
             children: [{
-                path: "",
-                name: 'products.list',
-                component: Productslist
-            }]
-        }, {
+                    path: "",
+                    name: 'products.list',
+                    component: Productslist
+                },
+                {
+                    path: 'view/:id',
+                    name: 'products.view',
+                    component: Productsview
+                },
+                {
+                    path: '*',
+                    component: NotFound
+                }
+            ]
+        },
+
+        {
             path: "/contact",
             name: "contact",
             component: Contact

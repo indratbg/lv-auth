@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Products::class, function (Faker $faker) {
     return [
-        'img_thumbnail' => 'http://localhost/lv-auth/thubnails/example.jpg',
+        'img_thumbnail' => 'https://placekitten.com/300/250',
         'product' => $faker->name(),
         'tags' => 'Perlengkapan Rumah',
         'price' => $faker->randomNumber(),

@@ -42,7 +42,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -50,10 +50,17 @@ export default {
       password: "secret"
     };
   },
-  computed: mapState({
-    errors: state => state.login.errors,
-    auth: state => state.user.auth
-  }),
+  created() {
+    if (this.loggedIn) {
+      this.$router.push({ name: "user.dashboard" });
+    }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.login.errors
+    }),
+    ...mapGetters(["loggedIn"])
+  },
   methods: {
     ...mapActions("login", ["userLogin"]),
     async login() {
@@ -65,7 +72,6 @@ export default {
           this.$router.push({
             name: "user.dashboard"
           });
-          //});
         })
         .catch(error => {
           console.log(error);

@@ -12,4 +12,9 @@ class ProductsController extends Controller
     {
         return Products::paginate();
     }
+
+    public function show($id)
+    {
+        return Products::find($id);
+    }
 }
