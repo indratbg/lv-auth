@@ -1,14 +1,15 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h1>Halaman Profile</h1>
+    {{ user}}
   </div>
 </template>
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
-      auth: state => state.user.auth.name
+      user: state => state.user.auth
     })
   }
 };

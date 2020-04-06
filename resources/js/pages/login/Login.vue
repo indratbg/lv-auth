@@ -9,7 +9,7 @@
           </div>
           <div class="card-body">
             <div class="alert alert-danger" role="alert" v-if="errors">
-              <p>{{ errors}}</p>
+              <p>{{ errors }}</p>
             </div>
             <form @submit.prevent="login" method="post">
               <div class="form-group">
@@ -51,20 +51,21 @@ export default {
     };
   },
   computed: mapState({
-    errors: state => state.login.errors
+    errors: state => state.login.errors,
+    auth: state => state.user.auth
   }),
   methods: {
     ...mapActions("login", ["userLogin"]),
-    login() {
-      this.userLogin({
+    async login() {
+      await this.userLogin({
         email: this.email,
         password: this.password
       })
         .then(response => {
           this.$router.push({
-            name: "dashboard",
-            params: { username: "Indra Tobing" }
+            name: "user.dashboard"
           });
+          //});
         })
         .catch(error => {
           console.log(error);

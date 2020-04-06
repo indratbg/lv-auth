@@ -4,6 +4,8 @@ import Vuex from 'vuex'
 import news from './stores/news.js'
 import contact from './stores/contact.js'
 import login from './stores/login.js'
+import user from './stores/user.js'
+import products from './stores/products'
 
 Vue.use(Vuex);
 
@@ -11,12 +13,15 @@ const store = new Vuex.Store({
     modules: {
         news,
         contact,
-        login
+        login,
+        user,
+        products
     },
     state: {
         token: localStorage.getItem('token') || null,
         errors: [],
-        success: []
+        success: [],
+        isLoading: false
     },
     getters: {
         loggedIn: state => {
@@ -39,6 +44,9 @@ const store = new Vuex.Store({
         CLEAR_SUCCESS(state) {
             state.success = []
         },
+        SET_LOADING(state, payload) {
+            state.isLoading = payload
+        }
     }
 });
 

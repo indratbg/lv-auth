@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h1>This is user dashboard</h1>
   </div>
 </template>
 <script>

@@ -2,9 +2,8 @@ import $axios from '../api.js'
 
 const state = () => ({
     listNews: [],
-    page: 1,
-    detailNews: [],
-    topTenNews: []
+    topTenNews: [],
+    detailNews: []
 })
 
 const mutations = {
@@ -27,6 +26,9 @@ const actions = {
         commit,
         state
     }, payload) {
+        commit('SET_LOADING', true, {
+            root: true
+        })
         return new Promise((resolve, reject) => {
             $axios.get(`/news?page=${state.page}`)
                 .then((response) => {
@@ -34,6 +36,9 @@ const actions = {
                     if (response.data && response.data.current_page < response.data.last_page) {
                         commit('SET_PAGE', response.data.current_page + 1)
                     }
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
                     resolve(response.data)
                 })
         })
@@ -42,10 +47,16 @@ const actions = {
         commit,
         state
     }, payload) {
+        commit('SET_LOADING', true, {
+            root: true
+        })
         return new Promise((resolve, reject) => {
             $axios.get(`/news/${payload.post_date}/${payload.title}`)
                 .then((response) => {
                     commit('DETAIL_NEWS', response)
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
                     resolve(response)
                 })
         })

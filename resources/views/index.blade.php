@@ -18,7 +18,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-image: linear-gradient(-225deg, #9EFBD3 0%, #57E9F2 48%, #45D4FB 100%);">
+<body style="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
     <div id="app">
         <app></app>
     </div>

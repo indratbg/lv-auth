@@ -44,12 +44,12 @@ const actions = {
                         // The request was made but no response was received
                         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                         // http.ClientRequest in node.js
-                        console.log(error.request);
+                        // console.log(error.request);
                     } else {
                         // Something happened in setting up the request that triggered an Error
                         console.log('Error', error.message);
                     }
-                    console.log(error.config);
+                    // console.log(error.config);
                     reject(error)
                 })
         })
@@ -58,6 +58,11 @@ const actions = {
         state,
         commit
     }, payload) {
+
+        commit('SET_LOADING', true, {
+            root: true
+        })
+
         return new Promise((resolve, reject) => {
             $axios.post(`/login`, payload)
                 .then((response) => {
@@ -67,11 +72,20 @@ const actions = {
                             root: true
                         })
                     }
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
                     resolve(response)
                 })
                 .catch((errors) => {
                     commit('SET_ERRORS', errors.response.data)
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
                 })
+
+
+
         })
     },
 
@@ -92,7 +106,7 @@ const actions = {
                         resolve(response.data)
                     })
                     .catch((error) => {
-                        console.log(error.config);
+                        //console.log(error.config);
                         reject(error)
                     })
             })

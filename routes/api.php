@@ -35,5 +35,11 @@ Route::group(['prefix' => 'news'], function () {
     Route::get('/{post_date}/{title}', 'API\NewsController@show');
 });
 
+//Products
+Route::group(['prefix' => 'products'], function () {
+
+    Route::get('/', 'API\ProductsController@index');
+});
+
 //Feedback
 Route::post('/feedback', 'API\FeedbackController@store');
