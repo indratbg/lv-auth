@@ -1,27 +1,31 @@
 // Body
-$body-bg: #00f2fe;
+$body-bg:#fff;
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+;
 //custom font
-$font-family-sans-serif: // Safari for OS X and iOS (San Francisco)
-// Android "Roboto",
-// Basic web fallback "Helvetica Neue", Arial,
+$font-family-sans-serif: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
 sans-serif,
-// Emoji fonts
 "Apple Color Emoji",
 "Segoe UI Emoji",
-"Segoe UI Symbol" !default;
-// Typography
-// $font-family-sans-serif: 'Nunito',
-// sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.3;
+"Segoe UI Symbol",
+"Noto Color Emoji";
+$font-size-base: 1rem;
+$line-height-base: 1.5;
 // Colors
 $blue: #007bff;
 $indigo: #6610f2;
 $purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
+$pink: #e83e8c;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
 $green: #28a745;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$teal: #20c997;
+$cyan: #17a2b8;

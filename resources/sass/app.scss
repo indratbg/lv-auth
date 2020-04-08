@@ -4,7 +4,15 @@
 @import "variables";
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
+@import "~font-awesome";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 @import "~@fortawesome/fontawesome-free/scss/solid";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
+a {
+    color: #2691d0;
+}
+
+body {
+    padding-top: 65px;
+}

@@ -52,7 +52,11 @@
                   v-model="password_confirmation"
                 />
               </div>
-              <button type="submit" class="btn btn-primary">Register</button>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
+                Register with :
+                <span class="fa fa-google"></span>
+              </div>
             </form>
           </div>
         </div>

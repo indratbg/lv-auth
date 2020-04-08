@@ -21,7 +21,8 @@ const store = new Vuex.Store({
         token: localStorage.getItem('token') || null,
         errors: [],
         success: [],
-        isLoading: false
+        isLoading: false,
+        app_name: 'Lv-Authentication'
     },
     getters: {
         loggedIn: state => {

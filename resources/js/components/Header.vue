@@ -1,7 +1,7 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-      <router-link class="navbar-brand" :to="{ name: 'home' }">Lv-Auth</router-link>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+      <router-link class="navbar-brand" :to="{ name: 'home' }">{{ app_name }}</router-link>
       <button
         class="navbar-toggler d-lg-none"
         type="button"
@@ -49,19 +49,17 @@
             <router-link v-if="!isLogin" class="nav-link" :to="{ name: 'register' }">Register</router-link>
           </li>
           <li class="nav-item dropdown" v-if="isLogin">
-            <router-link
+            <a
               id="navbarDropdown"
               class="nav-link dropdown-toggle"
-              href="#"
               role="button"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              v-pre
             >
-              Welcome
+              Welcome {{user.name}}
               <span class="caret"></span>
-            </router-link>
+            </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <router-link class="nav-link" :to="{name:'user.dashboard'}">Dashboard</router-link>
@@ -89,7 +87,12 @@ export default {
         });
       }
       return authUser;
-    }
+    },
+
+    ...mapState({
+      app_name: state => state.app_name,
+      user: state => state.user.auth
+    })
   },
   methods: {
     ...mapActions("user", ["getUserDetail"])

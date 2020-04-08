@@ -9,16 +9,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
-
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    {{--  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">  --}}
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
+<body>
     <div id="app">
         <app></app>
     </div>

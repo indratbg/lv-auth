@@ -1,25 +1,20 @@
 <template>
   <div>
-    <div class="container-fluid"></div>
+    <app-header></app-header>
     <div class="container">
-      <app-header></app-header>
-    </div>
-    <div class="container">
-      <div class="content-wrapper mt-3">
-        <div class="text text-center" v-if="isLoad">
-          <div class="spinner-border text-danger" role="status">
-            <span class="sr-only text-center">Loading...</span>
-          </div>
+      <div class="text text-center" v-if="isLoad">
+        <div class="spinner-border text-danger" role="status">
+          <span class="sr-only text-center">Loading...</span>
         </div>
-        <router-view></router-view>
       </div>
+      <router-view></router-view>
       <app-footer></app-footer>
     </div>
   </div>
 </template>
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 import { mapState, mapGetters } from "vuex";
 export default {
   components: {
