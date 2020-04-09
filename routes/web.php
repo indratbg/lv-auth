@@ -18,3 +18,18 @@ Route::get('/{any}', 'FrontController@index')->where('any', '.*');
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Testing
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+//register with google
+Route::get('/social/{provider}', 'API\SocialiteController@redirectToProvider')->name('social.google');
+Route::get('/social/{provider}/callback', 'API\SocialiteController@handleProviderCallback');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
