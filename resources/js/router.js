@@ -25,6 +25,9 @@ import Products from './pages/products/Products.vue';
 import Productslist from './pages/products/Productslist.vue';
 import Productsview from './pages/products/View.vue';
 
+//Forgot Password
+import ForgotPassword from './pages/login/ForgotPassword.vue';
+
 Vue.use(Router);
 
 const router = new Router({
@@ -83,6 +86,11 @@ const router = new Router({
             path: "/login",
             name: "login",
             component: Login
+        },
+        {
+            path: "/forgotpassword",
+            name: "forgot.password",
+            component: ForgotPassword
         },
         {
             path: "/logout",
