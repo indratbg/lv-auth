@@ -44,3 +44,7 @@ Route::group(['prefix' => 'products'], function () {
 
 //Feedback
 Route::post('/feedback', 'API\FeedbackController@store');
+
+//register with google
+Route::get('/social/{provider}', 'API\SocialiteController@redirectToProvider');
+Route::get('/social/{provider}/callback', 'API\SocialiteController@handleProviderCallback');
