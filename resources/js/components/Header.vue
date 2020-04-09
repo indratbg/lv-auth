@@ -23,7 +23,7 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'products.list' }">
-              <i class="fa fa-cart-plus"></i> Products
+              <i class="fas fa-shopping-cart"></i> Products
             </router-link>
           </li>
           <li class="nav-item">
