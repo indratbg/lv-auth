@@ -52,7 +52,6 @@ class SocialiteController extends Controller
             $newUser->avatar = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;
             $newUser->save();
-            echo "<script> localStorage.setItem('token',$user->token) </script>";
         }
         return response()->json(['data' => $user]);
     }
