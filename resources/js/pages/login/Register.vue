@@ -54,8 +54,22 @@
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+              <div class="form-group">
                 Register with :
-                <span class="fa fa-google"></span>
+                <button
+                  class="btn btn-danger"
+                  title="Google"
+                  @click.prevent="registerProvider"
+                >
+                  <span class="fab fa-google"></span>
+                </button>
+                <button class="btn btn-primary" title="Twitter">
+                  <span class="fab fa-twitter"></span>
+                </button>
+                <button class="btn btn-primary" title="Phone">
+                  <span class="fas fa-mobile-alt"></span>
+                </button>
               </div>
             </form>
           </div>
@@ -70,10 +84,10 @@ import { mapActions, mapState } from "vuex";
 export default {
   data() {
     return {
-      name: "John Frederich",
-      email: "john@example.com",
-      password: "secret",
-      password_confirmation: "secret"
+      name: null,
+      email: null,
+      password: null,
+      password_confirmation: null
     };
   },
   computed: {
@@ -83,7 +97,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions("login", ["userRegister"]),
+    ...mapActions("login", ["userRegister", "registerGoogle"]),
     register() {
       this.userRegister({
         name: this.name,
@@ -91,6 +105,9 @@ export default {
         password: this.password,
         password_confirmation: this.password_confirmation
       });
+    },
+    registerProvider() {
+      window.location.replace("api/social/google");
     }
   }
 };
