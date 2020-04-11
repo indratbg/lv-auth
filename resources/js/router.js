@@ -98,6 +98,12 @@ const router = new Router({
             component: Logout
         },
         {
+            path: '/auth/:provider/callback',
+            component: {
+                template: '<div class="auth-component"></div>'
+            }
+        },
+        {
             path: "/user",
             component: Dashboard,
             meta: {

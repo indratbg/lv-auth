@@ -45,10 +45,10 @@ const actions = {
                         // The request was made but no response was received
                         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
                         // http.ClientRequest in node.js
-                        // console.log(error.request);
+                        //console.log(error.request);
                     } else {
                         // Something happened in setting up the request that triggered an Error
-                        // console.log("Error" + error.message);
+                        //console.log("Error" + error.response);
                     }
                     // console.log(error.config);
                     reject(error);
@@ -82,7 +82,10 @@ const actions = {
                     resolve(response);
                 })
                 .catch(errors => {
-                    commit("SET_ERRORS", errors.response.data);
+
+                    commit("SET_ERRORS", errors.response.data, {
+                        root: true
+                    });
                     commit("SET_LOADING", false, {
                         root: true
                     });

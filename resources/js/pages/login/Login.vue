@@ -11,7 +11,7 @@
                         <div
                             class="alert alert-danger"
                             role="alert"
-                            v-if="errors"
+                            v-if="errors.length > 0"
                         >
                             <p>{{ errors }}</p>
                         </div>
@@ -72,7 +72,7 @@ export default {
     },
     computed: {
         ...mapState({
-            errors: state => state.login.errors
+            errors: state => state.errors
         }),
         ...mapGetters(["loggedIn"])
     },

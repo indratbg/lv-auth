@@ -33,3 +33,6 @@ Route::get('/social/{provider}/callback', 'API\SocialiteController@handleProvide
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('sociallogin/{provider}', 'AuthController@SocialSignup');
+// Route::get('auth/{provider}/callback', 'OutController@index')->where('provider', '.*');

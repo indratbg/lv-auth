@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Socialite;
 
 class AuthController extends Controller
 {
@@ -60,5 +61,33 @@ class AuthController extends Controller
         });
 
         return response()->json('Logged out successfully', 200);
+    }
+
+    public function SocialSignup($provider)
+    {
+        // Socialite will pick response data automatic
+        $user = Socialite::driver($provider)->stateless()->user();
+
+
+        $userExisting = User::where('email', $user->email)->first();
+
+        if ($userExisting) {
+
+            if ($userExisting->google_id == null) {
+                return response()->json(['errors' => ['err_code' => '-1', 'message' => 'Please login with google account']]);
+            } else {
+                return response()->json(['errors' => ['err_code' => '-1', 'message' => 'User has been registered, please login']]);
+            }
+        } else {
+            $newUser = new User();
+            $newUser->name = $user->name;
+            $newUser->google_id = $user->id;
+            $newUser->email = $user->email;
+            $newUser->avatar = $user->avatar;
+            $newUser->avatar_original = $user->avatar_original;
+            $newUser->save();
+            $token = $newUser->createToken('socialite')->accessToken;
+            return response()->json(['access_token' => $token]);
+        }
     }
 }
