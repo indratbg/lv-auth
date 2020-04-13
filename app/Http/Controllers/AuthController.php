@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TestingEmail;
 use Exception;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
 use App\User;
 use Illuminate\Support\Facades\Hash;
-use Socialite;
+use Illuminate\Support\Facades\Mail;
+use Socialite as Socialite;
 
 class AuthController extends Controller
 {
@@ -89,5 +91,14 @@ class AuthController extends Controller
             $token = $newUser->createToken('socialite')->accessToken;
             return response()->json(['access_token' => $token]);
         }
+    }
+    public function SocialLogin($provider)
+    {
+        $user = Socialite::driver($provider)->stateless()->user();
+        $token = User::where('email', $user->email)->first()->createToken('socialite')->accessToken;
+        //send a email
+        Mail::to($user->email)->send(new TestingEmail);
+
+        return response()->json(['access_token' => $token]);
     }
 }

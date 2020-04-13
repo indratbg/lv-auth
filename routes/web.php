@@ -24,6 +24,9 @@ Route::get('/{any}', 'FrontController@index')->where('any', '.*');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/email', function () {
+    return new App\Mail\TestingEmail;
+});
 
 
 //register with google
@@ -34,5 +37,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('sociallogin/{provider}', 'AuthController@SocialSignup');
-// Route::get('auth/{provider}/callback', 'OutController@index')->where('provider', '.*');
+Route::post('socialregister/{provider}', 'AuthController@SocialSignup');
+Route::post('sociallogin/{provider}', 'AuthController@SocialLogin');

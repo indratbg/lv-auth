@@ -58,19 +58,13 @@
                 <button type="submit" class="btn btn-primary">Register</button>
               </div>
               <div class="form-group">
-                Register with :
                 <button
-                  class="btn btn-danger"
+                  class="btn btn-block btn-danger"
                   title="Google"
                   @click.prevent="AuthProvider('google')"
                 >
+                  Register with
                   <span class="fab fa-google"></span>
-                </button>
-                <button class="btn btn-primary" title="Twitter">
-                  <span class="fab fa-twitter"></span>
-                </button>
-                <button class="btn btn-primary" title="Phone">
-                  <span class="fas fa-mobile-alt"></span>
                 </button>
               </div>
             </form>
@@ -99,7 +93,7 @@ export default {
     })
   },
   methods: {
-    ...mapActions("login", ["userRegister", "registerGoogle"]),
+    ...mapActions("login", ["userRegister"]),
     register() {
       this.userRegister({
         name: this.name,
@@ -107,9 +101,6 @@ export default {
         password: this.password,
         password_confirmation: this.password_confirmation
       });
-    },
-    registerProvider() {
-      window.location.replace("api/social/google");
     },
     AuthProvider(provider) {
       var self = this;
@@ -126,7 +117,7 @@ export default {
 
     SocialLogin(provider, response) {
       this.$http
-        .post("/sociallogin/" + provider, response)
+        .post("/socialregister/" + provider, response)
         .then(response => {
           console.log(response.data.errors);
 

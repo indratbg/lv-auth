@@ -2396,7 +2396,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2447,6 +2446,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee);
       }))();
+    },
+    loginProvider: function loginProvider(provider) {
+      var self = this;
+      this.$auth.authenticate(provider).then(function (response) {
+        self.SocialLogin(provider, response);
+      })["catch"](function (err) {
+        console.log({
+          err: err
+        });
+      });
+    },
+    SocialLogin: function SocialLogin(provider, response) {
+      var _this2 = this;
+
+      this.$http.post("/sociallogin/" + provider, response).then(function (response) {
+        console.log(response.data.errors);
+
+        if (response.data.errors) {
+          _this2.$store.commit("SET_ERRORS", response.data.errors, {
+            root: true
+          });
+        } else {
+          _this2.$store.commit("SET_TOKEN", response.data.access_token, {
+            root: true
+          });
+
+          localStorage.setItem("token", response.data.access_token);
+
+          _this2.$router.push({
+            name: "user.dashboard"
+          });
+        }
+      })["catch"](function (err) {
+        console.log({
+          err: err
+        });
+      });
     }
   })
 });
@@ -2546,12 +2582,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2570,7 +2600,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return state.success;
     }
   })),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("login", ["userRegister", "registerGoogle"]), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("login", ["userRegister"]), {
     register: function register() {
       this.userRegister({
         name: this.name,
@@ -2578,9 +2608,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         password: this.password,
         password_confirmation: this.password_confirmation
       });
-    },
-    registerProvider: function registerProvider() {
-      window.location.replace("api/social/google");
     },
     AuthProvider: function AuthProvider(provider) {
       var self = this;
@@ -2595,7 +2622,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     SocialLogin: function SocialLogin(provider, response) {
       var _this = this;
 
-      this.$http.post("/sociallogin/" + provider, response).then(function (response) {
+      this.$http.post("/socialregister/" + provider, response).then(function (response) {
         console.log(response.data.errors);
 
         if (response.data.errors) {
@@ -40305,11 +40332,7 @@ var render = function() {
                         staticClass: "btn btn-primary",
                         attrs: { type: "submit" }
                       },
-                      [
-                        _vm._v(
-                          "\n                                Login\n                            "
-                        )
-                      ]
+                      [_vm._v("Login")]
                     ),
                     _vm._v(" "),
                     _c(
@@ -40322,7 +40345,29 @@ var render = function() {
                     )
                   ],
                   1
-                )
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-block btn-danger",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.loginProvider("google")
+                        }
+                      }
+                    },
+                    [
+                      _vm._v("\n                Login with\n                "),
+                      _c("i", {
+                        staticClass: "fab fa-google",
+                        attrs: { "aria-hidden": "true" }
+                      })
+                    ]
+                  )
+                ])
               ]
             )
           ])
@@ -40340,7 +40385,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-header" }, [
       _c("i", { staticClass: "fa fa-key" }),
-      _vm._v(" Login\n                ")
+      _vm._v(" Login\n        ")
     ])
   }
 ]
@@ -40554,11 +40599,10 @@ var render = function() {
                 _vm._m(1),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _vm._v("\n              Register with :\n              "),
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-danger",
+                      staticClass: "btn btn-block btn-danger",
                       attrs: { title: "Google" },
                       on: {
                         click: function($event) {
@@ -40567,12 +40611,13 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("span", { staticClass: "fab fa-google" })]
-                  ),
-                  _vm._v(" "),
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3)
+                    [
+                      _vm._v(
+                        "\n                Register with\n                "
+                      ),
+                      _c("span", { staticClass: "fab fa-google" })
+                    ]
+                  )
                 ])
               ]
             )
@@ -40605,26 +40650,6 @@ var staticRenderFns = [
         [_vm._v("Register")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-primary", attrs: { title: "Twitter" } },
-      [_c("span", { staticClass: "fab fa-twitter" })]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      { staticClass: "btn btn-primary", attrs: { title: "Phone" } },
-      [_c("span", { staticClass: "fas fa-mobile-alt" })]
-    )
   }
 ]
 render._withStripped = true
