@@ -1,4 +1,5 @@
 <template>
+<div class="container">
     <div class="card">
         <div class="card-body">
             <form @submit.prevent="sendPassword" method="post">
@@ -25,6 +26,7 @@
                 </div>
             </form>
         </div>
+    </div>
     </div>
 </template>
 <script>

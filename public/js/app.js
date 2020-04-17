@@ -2018,6 +2018,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -2387,6 +2390,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2829,6 +2834,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -40374,74 +40381,84 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-text" }, [
-              _c("ul", { staticClass: "list-group" }, [
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [_vm._v("Item 1")])
+      _c("div", { staticClass: "clearfix" }, [_c("hr")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "container-fluid  bg-warning" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text" }, [
+                _c("ul", { staticClass: "list-group" }, [
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ])
+                ])
               ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-text" }, [
-              _c("ul", { staticClass: "list-group" }, [
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [_vm._v("Item 1")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text" }, [
+                _c("ul", { staticClass: "list-group" }, [
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ])
+                ])
               ])
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-4" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-text" }, [
-              _c("ul", { staticClass: "list-group" }, [
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [
-                  _vm._v("Item 1")
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "list-group-item" }, [_vm._v("Item 1")])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-text" }, [
+                _c("ul", { staticClass: "list-group" }, [
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "list-group-item" }, [
+                    _vm._v("Item 1")
+                  ])
+                ])
               ])
             ])
           ])
@@ -41166,57 +41183,59 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-body" }, [
-      _c(
-        "form",
-        {
-          attrs: { method: "post" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.sendPassword($event)
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
+        _c(
+          "form",
+          {
+            attrs: { method: "post" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.sendPassword($event)
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "label",
-                { staticClass: "col-md-1", attrs: { for: "email" } },
-                [_vm._v("Email")]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.email,
-                      expression: "email"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "email", required: "" },
-                  domProps: { value: _vm.email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+          },
+          [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c(
+                  "label",
+                  { staticClass: "col-md-1", attrs: { for: "email" } },
+                  [_vm._v("Email")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-4" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.email,
+                        expression: "email"
                       }
-                      _vm.email = $event.target.value
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "email", required: "" },
+                    domProps: { value: _vm.email },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.email = $event.target.value
+                      }
                     }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _vm._m(0)
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(0)
+              ])
             ])
-          ])
-        ]
-      )
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -41691,13 +41710,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "text-center" }, [
-          _c("h2", [
-            _vm._v(
-              "A fresh verification link has been sent to your email address."
-            )
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("div", { staticClass: "text-center" }, [
+            _c("h2", [
+              _vm._v(
+                "A fresh verification link has been sent to your email address."
+              )
+            ])
           ])
         ])
       ])
@@ -63511,7 +63532,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
 
 
       vue__WEBPACK_IMPORTED_MODULE_0___default.a.$snotify.html("<div class=\"snotifyToast__title\"><b>".concat(payload.state.errors.message, "</b></div>\n            <div class=\"snotifyToast__body\">").concat(message, "</div> <div class=\"snotify-icon snotify-icon--error\"></div>"), {
-        timeout: 3000,
+        timeout: 2000,
         showProgressBar: true,
         closeOnClick: false,
         pauseOnHover: true,
@@ -63524,7 +63545,7 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     showSuccess: function showSuccess(payload) {
       //notifyjs
       vue__WEBPACK_IMPORTED_MODULE_0___default.a.$snotify.html("<div class=\"snotifyToast__title\"><b>Successfully</b></div>\n            <div class=\"snotifyToast__body\">".concat(payload.state.success, "</div> <div class=\"snotify-icon snotify-icon--success\"></div>"), {
-        timeout: 3000,
+        timeout: 2000,
         showProgressBar: true,
         closeOnClick: false,
         pauseOnHover: true,
