@@ -6,14 +6,17 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <app></app>
+        <app>
+
+        </app>
     </div>
   <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

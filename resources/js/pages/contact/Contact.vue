@@ -1,24 +1,20 @@
 <template>
-  <div>
+  <div class="container">
     <div class="card">
       <div class="card-body">
         <h1>Contact Us</h1>
         <form method="POST" @submit.prevent="send">
-          <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="success">
-            <strong>{{success}}</strong>
-          </div>
-
           <div class="form-group row">
             <label for="inputNane" class="col-md-2 col-form-label">Name</label>
             <div class="col-md-5">
               <input
                 type="text"
-                v-bind:class="[errors.name?'is-invalid':'','form-control']"
+               class="form-control"
                 id="inputName"
                 placeholder="Name"
                 v-model="name"
               />
-              <div class="invalid-feedback" v-if="errors.name">{{errors.name[0]}}</div>
+
             </div>
           </div>
           <div class="form-group row">
@@ -26,13 +22,13 @@
             <div class="col-md-5">
               <input
                 type="text"
-                v-bind:class="[errors.subject?'is-invalid':'','form-control']"
+                class="form-control"
                 id="subject"
                 placeholder="Subject"
                 autocomplete="off"
                 v-model="subject"
               />
-              <div class="invalid-feedback" v-if="errors.subject">{{errors.subject[0]}}</div>
+
             </div>
           </div>
           <div class="form-group row">
@@ -40,13 +36,13 @@
             <div class="col-md-5">
               <input
                 type="email"
-                v-bind:class="[errors.email?'is-invalid':'','form-control']"
+               class="form-control"
                 id="email"
                 placeholder="Email"
                 autocomplete="off"
                 v-model="email"
               />
-              <div class="invalid-feedback" v-if="errors.email">{{errors.email[0]}}</div>
+
             </div>
           </div>
           <div class="form-group row">
@@ -55,10 +51,10 @@
               <textarea
                 id="body"
                 rows="3"
-                v-bind:class="[errors.body?'is-invalid':'','form-control']"
+               class="form-control"
                 v-model="body"
               ></textarea>
-              <div class="invalid-feedback" v-if="errors.body">{{errors.body[0]}}</div>
+
             </div>
           </div>
           <div class="form-group row">
@@ -73,7 +69,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -82,12 +78,6 @@ export default {
       subject: "Testing Feedback",
       body: "Ini adalah body feedback"
     };
-  },
-  computed: {
-    ...mapState({
-      errors: state => state.contact.errors,
-      success: state => state.contact.success
-    })
   },
   methods: {
     ...mapActions("contact", ["sendFeedback"]),

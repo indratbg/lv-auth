@@ -24,6 +24,12 @@ const actions = {
                     resolve(response)
                 })
                 .catch(error => {
+                    if (error.response.status == 403) {
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        })
+                    }
+                    // console.log(error.response.data)
                     reject(error.response)
                 })
 

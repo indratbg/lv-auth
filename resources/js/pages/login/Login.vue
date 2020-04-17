@@ -8,9 +8,6 @@
             <i class="fa fa-key"></i> Login
           </div>
           <div class="card-body">
-            <div class="alert alert-danger" role="alert" v-if="errors.length > 0">
-              <p>{{ errors }}</p>
-            </div>
             <form @submit.prevent="login" method="post">
               <div class="form-group">
                 <label for="email">E-Mail</label>
@@ -33,25 +30,37 @@
                 />
               </div>
               <div class="form-group">
-                <button type="submit" class="btn btn-primary">Login</button>
-
+                <div class="row">
+                  <div class="col-6">
+                    <button type="submit" class="btn btn-block btn-primary">Login</button>
+                  </div>
+                  <div class="col-6">
+                    <button
+                      class="btn btn-block btn-danger"
+                      @click.prevent="
+                                                loginProvider('google')
+                                            "
+                    >
+                      Login with
+                      <i class="fab fa-google" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
                 <router-link
                   href="#"
                   class="btn btn-link"
                   :to="{ name: 'forgot.password' }"
                 >Forgot password ?</router-link>
               </div>
-              <div class="form-group">
-                <button class="btn btn-block btn-danger" @click.prevent="loginProvider('google')">
-                  Login with
-                  <i class="fab fa-google" aria-hidden="true"></i>
-                </button>
-              </div>
             </form>
           </div>
         </div>
       </div>
-      <div class="col"></div>
+      <div class="col">
+        <vue-snotify></vue-snotify>
+      </div>
     </div>
   </div>
 </template>
@@ -88,10 +97,11 @@ export default {
           });
         })
         .catch(error => {
-          console.log(error);
+          console.log(error.response);
         });
     },
     loginProvider(provider) {
+      this.$store.commit("SET_LOADING", true, { root: true });
       var self = this;
 
       this.$auth
@@ -101,6 +111,7 @@ export default {
         })
         .catch(err => {
           console.log({ err: err });
+          this.$store.commit("SET_LOADING", false, { root: true });
         });
     },
 
@@ -108,22 +119,19 @@ export default {
       this.$http
         .post("/sociallogin/" + provider, response)
         .then(response => {
-          console.log(response.data.errors);
 
-          if (response.data.errors) {
-            this.$store.commit("SET_ERRORS", response.data.errors, {
-              root: true
-            });
-          } else {
             this.$store.commit("SET_TOKEN", response.data.access_token, {
               root: true
             });
             localStorage.setItem("token", response.data.access_token);
             this.$router.push({ name: "user.dashboard" });
-          }
+
+          this.$store.commit("SET_LOADING", false, { root: true });
         })
         .catch(err => {
           console.log({ err: err });
+          this.$store.commit('SET_ERRORS',err.response.data,{root:true})
+          this.$store.commit("SET_LOADING", false, { root: true });
         });
     }
   }

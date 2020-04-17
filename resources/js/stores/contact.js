@@ -28,7 +28,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             $axios.post('feedback', payload)
                 .then((response) => {
-                    commit('SUCCESS', response.data.success);
+                    commit('SET_SUCCESS', response.data.success, { root: true });
                     commit('ERROR', "")
                     resolve(response.data)
                     commit('SET_LOADING', false, {
@@ -40,11 +40,7 @@ const actions = {
                         root: true
                     })
                     if (error.response) {
-
-                        if (error.response.status == '422') {
-                            commit('ERROR', error.response.data.errors);
-                        }
-
+                        commit('SET_ERRORS', error.response.data, { root: true });
                     } else if (error.request) {
 
                         //console.log(error.request);
@@ -52,7 +48,7 @@ const actions = {
 
                     // console.log(error.config);
 
-                    commit('SUCCESS', "");
+
                     reject(error)
                 })
         })

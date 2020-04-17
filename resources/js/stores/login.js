@@ -28,19 +28,11 @@ const actions = {
                     resolve(response);
                 })
                 .catch(error => {
-                    commit(
-                        "SET_SUCCESS", {
-                            success: null
-                        }, {
-                            root: true
-                        }
-                    );
+
                     if (error.response) {
-                        if (error.response.status == 422) {
-                            commit("SET_ERRORS", error.response.data, {
-                                root: true
-                            });
-                        }
+                        commit("SET_ERRORS", error.response.data, {
+                            root: true
+                        });
                     } else if (error.request) {
                         // The request was made but no response was received
                         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
@@ -48,9 +40,9 @@ const actions = {
                         //console.log(error.request);
                     } else {
                         // Something happened in setting up the request that triggered an Error
-                        //console.log("Error" + error.response);
+                        console.log("Error" + error.response);
                     }
-                    // console.log(error.config);
+
                     reject(error);
                 });
         });
@@ -89,6 +81,7 @@ const actions = {
                     commit("SET_LOADING", false, {
                         root: true
                     });
+
                 });
         });
     },

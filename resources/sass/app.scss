@@ -16,3 +16,13 @@ a {
 body {
     padding-top: 65px;
 }
+
+.navbar>a {
+    color: blue;
+}
+
+.swal-overlay {
+    background-color: #3C3E3F;
+}
+
+@import '~vue-snotify/styles/material.scss'

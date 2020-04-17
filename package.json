@@ -27,9 +27,12 @@
         "@fortawesome/fontawesome-free": "^5.12.1",
         "bootstrap-vue": "^2.10.1",
         "font-awesome": "^4.7.0",
+        "sweetalert": "^2.1.2",
         "vue-axios": "^2.1.5",
         "vue-navigation-bar": "^2.0.0",
+        "vue-notifyjs": "^0.4.3",
         "vue-router": "^3.1.5",
+        "vue-snotify": "^3.2.1",
         "vue-social-auth": "^1.4.3",
         "vuex": "^3.1.2"
     }
