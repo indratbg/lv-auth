@@ -88,10 +88,10 @@ export default {
     font-weight: bold;
     animation-name: biggerdics;
     animation-delay: 1s;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
-    animation-timing-function:cubic-bezier(1, 0, 0, 1);
+    animation-timing-function:ease-out;
 }
 @keyframes biggerdics {
    from {margin-left: 5%;font-size: 1em;}

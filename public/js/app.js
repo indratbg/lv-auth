@@ -2390,6 +2390,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2421,24 +2428,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      email: null,
-      errors: []
+      email: null
     };
   },
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("login", ["sendResetPassword"]), {
     sendPassword: function sendPassword() {
-      if (this.email == null) {
-        this.errors = {
-          email: "Email is required"
-        };
-      } else {
-        console.log("send request password" + this.email);
-      }
+      this.sendResetPassword({
+        email: this.email
+      });
     }
-  }
+  })
 });
 
 /***/ }),
@@ -2817,6 +2824,128 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       })["catch"](function (err) {
         console.log({
           err: err
+        });
+      });
+    }
+  })
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/login/ResetPassword.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/login/ResetPassword.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      query: this.$router.currentRoute.query,
+      email: this.$router.currentRoute.query.email,
+      password: null,
+      password_confirmation: null
+    };
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("login", ["resetPassword"]), {
+    reset: function reset() {
+      var _this = this;
+
+      this.resetPassword({
+        'query': this.query,
+        'password': this.password,
+        'password_confirmation': this.password_confirmation
+      }).then(function (response) {
+        _this.$router.push({
+          name: 'login'
         });
       });
     }
@@ -8084,7 +8213,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#landingPage[data-v-4c3f1cd4]{\n    background-image: url('/images/slide 3.png');\n    height: 500px;\n    width: 100%;\n    background-repeat: no-repeat;\n    background-size: 100% 100%;\n}\n.bigTitle[data-v-4c3f1cd4]{\n    font-family:sans-serif;\n    font-size: 2em;\n    color:#fff;\n    padding-top: 80px;\n    padding-left: 30px;\n    font-weight: bold;\n}\n.dicount[data-v-4c3f1cd4]{\n    /* height: 200px; */\n    width: 200px;\n    background-color:#EFDCC1 ;\n    font-size: 2em;\n    color: #fff;\n    text-align: center;\n    vertical-align:middle;\n    margin-left: 30px;\n    margin-top: 200px;\n    font-weight: bold;\n    -webkit-animation-name: biggerdics-data-v-4c3f1cd4;\n            animation-name: biggerdics-data-v-4c3f1cd4;\n    -webkit-animation-delay: 1s;\n            animation-delay: 1s;\n    -webkit-animation-duration: 2s;\n            animation-duration: 2s;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    -webkit-animation-iteration-count: infinite;\n            animation-iteration-count: infinite;\n    -webkit-animation-timing-function:cubic-bezier(1, 0, 0, 1);\n            animation-timing-function:cubic-bezier(1, 0, 0, 1);\n}\n@-webkit-keyframes biggerdics-data-v-4c3f1cd4 {\nfrom {margin-left: 5%;font-size: 1em;}\nto {margin-left: 15%;font-size: 3em;width: 300px;}\n}\n@keyframes biggerdics-data-v-4c3f1cd4 {\nfrom {margin-left: 5%;font-size: 1em;}\nto {margin-left: 15%;font-size: 3em;width: 300px;}\n}\n", ""]);
+exports.push([module.i, "\n#landingPage[data-v-4c3f1cd4]{\n    background-image: url('/images/slide 3.png');\n    height: 500px;\n    width: 100%;\n    background-repeat: no-repeat;\n    background-size: 100% 100%;\n}\n.bigTitle[data-v-4c3f1cd4]{\n    font-family:sans-serif;\n    font-size: 2em;\n    color:#fff;\n    padding-top: 80px;\n    padding-left: 30px;\n    font-weight: bold;\n}\n.dicount[data-v-4c3f1cd4]{\n    /* height: 200px; */\n    width: 200px;\n    background-color:#EFDCC1 ;\n    font-size: 2em;\n    color: #fff;\n    text-align: center;\n    vertical-align:middle;\n    margin-left: 30px;\n    margin-top: 200px;\n    font-weight: bold;\n    -webkit-animation-name: biggerdics-data-v-4c3f1cd4;\n            animation-name: biggerdics-data-v-4c3f1cd4;\n    -webkit-animation-delay: 1s;\n            animation-delay: 1s;\n    -webkit-animation-duration: 1s;\n            animation-duration: 1s;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    -webkit-animation-iteration-count: infinite;\n            animation-iteration-count: infinite;\n    -webkit-animation-timing-function:ease-out;\n            animation-timing-function:ease-out;\n}\n@-webkit-keyframes biggerdics-data-v-4c3f1cd4 {\nfrom {margin-left: 5%;font-size: 1em;}\nto {margin-left: 15%;font-size: 3em;width: 300px;}\n}\n@keyframes biggerdics-data-v-4c3f1cd4 {\nfrom {margin-left: 5%;font-size: 1em;}\nto {margin-left: 15%;font-size: 3em;width: 300px;}\n}\n", ""]);
 
 // exports
 
@@ -40383,87 +40512,94 @@ var staticRenderFns = [
     return _c("div", [
       _c("div", { staticClass: "clearfix" }, [_c("hr")]),
       _vm._v(" "),
-      _c("div", { staticClass: "container-fluid  bg-warning" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-text" }, [
-                _c("ul", { staticClass: "list-group" }, [
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
+      _c(
+        "div",
+        {
+          staticClass: "container-fluid",
+          staticStyle: { "background-color": "#DEDEE0" }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-text" }, [
+                  _c("ul", { staticClass: "list-group" }, [
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ])
                   ])
                 ])
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-text" }, [
-                _c("ul", { staticClass: "list-group" }, [
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-text" }, [
+                  _c("ul", { staticClass: "list-group" }, [
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ])
                   ])
                 ])
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }, [
-            _c("div", { staticClass: "card-body" }, [
-              _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-text" }, [
-                _c("ul", { staticClass: "list-group" }, [
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v("Item 1")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h3", { staticClass: "card-title" }, [_vm._v("About")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-text" }, [
+                  _c("ul", { staticClass: "list-group" }, [
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ]),
+                    _vm._v(" "),
+                    _c("li", { staticClass: "list-group-item" }, [
+                      _vm._v("Item 1")
+                    ])
                   ])
                 ])
               ])
             ])
           ])
-        ])
-      ])
+        ]
+      )
     ])
   }
 ]
@@ -41184,57 +41320,71 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-body" }, [
-        _c(
-          "form",
-          {
-            attrs: { method: "post" },
-            on: {
-              submit: function($event) {
-                $event.preventDefault()
-                return _vm.sendPassword($event)
-              }
-            }
-          },
-          [
-            _c("div", { staticClass: "form-group" }, [
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "label",
-                  { staticClass: "col-md-1", attrs: { for: "email" } },
-                  [_vm._v("Email")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-md-4" }, [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "email", required: "" },
-                    domProps: { value: _vm.email },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Reset Password")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c(
+              "form",
+              {
+                attrs: { method: "POST" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.sendPassword($event)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-md-4 col-form-label text-md-right",
+                      attrs: { for: "email" }
+                    },
+                    [_vm._v("E-Mail Address")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.email,
+                          expression: "email"
                         }
-                        _vm.email = $event.target.value
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        id: "email",
+                        type: "email",
+                        name: "email",
+                        required: "required",
+                        autocomplete: "email",
+                        autofocus: "autofocus"
+                      },
+                      domProps: { value: _vm.email },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.email = $event.target.value
+                        }
                       }
-                    }
-                  })
+                    })
+                  ])
                 ]),
                 _vm._v(" "),
                 _vm._m(0)
-              ])
-            ])
-          ]
-        )
+              ]
+            )
+          ])
+        ])
       ])
     ])
   ])
@@ -41244,15 +41394,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("input", {
-        staticClass: "btn btn-danger",
-        attrs: {
-          title: "Reset Password",
-          type: "submit",
-          value: "Reset Password"
-        }
-      })
+    return _c("div", { staticClass: "form-group row mb-0" }, [
+      _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Send Password Reset Link")]
+        )
+      ])
     ])
   }
 ]
@@ -41679,6 +41828,199 @@ var staticRenderFns = [
           )
         ]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/login/ResetPassword.vue?vue&type=template&id=661dc4eb&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/pages/login/ResetPassword.vue?vue&type=template&id=661dc4eb& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("Reset Password")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c(
+                "form",
+                {
+                  attrs: { method: "POST" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.reset($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-md-4 col-form-label text-md-right",
+                        attrs: { for: "email" }
+                      },
+                      [_vm._v("E-Mail Address")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.email,
+                            expression: "email"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "email",
+                          type: "email",
+                          name: "email",
+                          required: "",
+                          autocomplete: "email",
+                          autofocus: ""
+                        },
+                        domProps: { value: _vm.email },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.email = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-md-4 col-form-label text-md-right",
+                        attrs: { for: "password" }
+                      },
+                      [_vm._v("Password")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.password,
+                            expression: "password"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "password",
+                          type: "password",
+                          name: "password",
+                          required: "",
+                          autocomplete: "new-password"
+                        },
+                        domProps: { value: _vm.password },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.password = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-md-4 col-form-label text-md-right",
+                        attrs: { for: "password-confirm" }
+                      },
+                      [_vm._v("Confirm Password")]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.password_confirmation,
+                            expression: "password_confirmation"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          id: "password-confirm",
+                          type: "password",
+                          name: "password_confirmation",
+                          required: "",
+                          autocomplete: "new-password"
+                        },
+                        domProps: { value: _vm.password_confirmation },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.password_confirmation = $event.target.value
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row mb-0" }, [
+      _c("div", { staticClass: "col-md-6 offset-md-4" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          [_vm._v("Reset Password")]
+        )
+      ])
     ])
   }
 ]
@@ -62376,6 +62718,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/pages/login/ResetPassword.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/pages/login/ResetPassword.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ResetPassword_vue_vue_type_template_id_661dc4eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResetPassword.vue?vue&type=template&id=661dc4eb& */ "./resources/js/pages/login/ResetPassword.vue?vue&type=template&id=661dc4eb&");
+/* harmony import */ var _ResetPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResetPassword.vue?vue&type=script&lang=js& */ "./resources/js/pages/login/ResetPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ResetPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ResetPassword_vue_vue_type_template_id_661dc4eb___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ResetPassword_vue_vue_type_template_id_661dc4eb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/pages/login/ResetPassword.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/pages/login/ResetPassword.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/pages/login/ResetPassword.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ResetPassword.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/login/ResetPassword.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPassword_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/pages/login/ResetPassword.vue?vue&type=template&id=661dc4eb&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/pages/login/ResetPassword.vue?vue&type=template&id=661dc4eb& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPassword_vue_vue_type_template_id_661dc4eb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ResetPassword.vue?vue&type=template&id=661dc4eb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/pages/login/ResetPassword.vue?vue&type=template&id=661dc4eb&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPassword_vue_vue_type_template_id_661dc4eb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResetPassword_vue_vue_type_template_id_661dc4eb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/pages/login/Verify.vue":
 /*!*********************************************!*\
   !*** ./resources/js/pages/login/Verify.vue ***!
@@ -63305,6 +63716,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_products_Productslist_vue__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/products/Productslist.vue */ "./resources/js/pages/products/Productslist.vue");
 /* harmony import */ var _pages_products_View_vue__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/products/View.vue */ "./resources/js/pages/products/View.vue");
 /* harmony import */ var _pages_login_ForgotPassword_vue__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/login/ForgotPassword.vue */ "./resources/js/pages/login/ForgotPassword.vue");
+/* harmony import */ var _pages_login_ResetPassword_vue__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/login/ResetPassword.vue */ "./resources/js/pages/login/ResetPassword.vue");
 
 
 
@@ -63327,6 +63739,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
  //Forgot Password
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
@@ -63383,6 +63796,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: "/forgotpassword",
     name: "forgot.password",
     component: _pages_login_ForgotPassword_vue__WEBPACK_IMPORTED_MODULE_21__["default"]
+  }, {
+    path: "/api/password/reset",
+    name: "reset.password",
+    component: _pages_login_ResetPassword_vue__WEBPACK_IMPORTED_MODULE_22__["default"]
   }, {
     path: "/logout",
     name: "logout",
@@ -63728,6 +64145,53 @@ var actions = {
         });
       });
     }
+  },
+  sendResetPassword: function sendResetPassword(_ref3, payload) {
+    var state = _ref3.state,
+        commit = _ref3.commit;
+    commit('SET_LOADING', true, {
+      root: true
+    });
+    return new Promise(function (resolve, reject) {
+      console.log(payload);
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post('password/email', payload).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error.response);
+      });
+      commit('SET_LOADING', false, {
+        root: true
+      });
+    });
+  },
+  resetPassword: function resetPassword(_ref4, payload) {
+    var state = _ref4.state,
+        commit = _ref4.commit;
+    commit('SET_LOADING', true, {
+      root: true
+    });
+    return new Promise(function (resolve, reject) {
+      _api_js__WEBPACK_IMPORTED_MODULE_0__["default"].post("password/reset?token=".concat(payload.query.token, "&email=").concat(payload.query.email), {
+        'password': payload.password,
+        'password_confirmation': payload.password_confirmation
+      }).then(function (response) {
+        commit('SET_SUCCESS', response.message, {
+          root: true
+        });
+        resolve(response);
+      })["catch"](function (error) {
+        if (error.response.data) {
+          commit('SET_ERRORS', error.response.data, {
+            root: true
+          });
+        }
+
+        reject(error);
+      });
+      commit('SET_LOADING', false, {
+        root: true
+      });
+    });
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

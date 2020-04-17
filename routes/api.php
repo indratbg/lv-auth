@@ -46,7 +46,9 @@ Route::group(['prefix' => 'products'], function () {
 Route::post('/feedback', 'API\FeedbackController@store');
 
 //VERIFY EMAIL
-
 Route::get('/email/resend', 'API\VerificationController@resend')->name('verification.resend');
-
 Route::get('/email/verify/{id}/{hash}', 'API\VerificationController@verify')->name('verification.verify');
+
+//RESET PASSWORD
+Route::post('/password/email', 'API\ForgotPasswordController@sendResetLinkEmail');
+Route::post('/password/reset', 'API\ResetPasswordController@reset')->name('password.reset');

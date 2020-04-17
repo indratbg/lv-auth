@@ -108,6 +108,41 @@ const actions = {
                     });
             });
         }
+    },
+    sendResetPassword({
+        state,
+        commit
+    }, payload) {
+        commit('SET_LOADING', true, { root: true });
+        return new Promise((resolve, reject) => {
+            console.log(payload)
+            $axios.post('password/email', payload)
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch(error => {
+                    console.log(error.response)
+                })
+            commit('SET_LOADING', false, { root: true });
+        });
+    },
+    resetPassword({ state, commit }, payload) {
+        commit('SET_LOADING', true, { root: true });
+        return new Promise((resolve, reject) => {
+            $axios.post(`password/reset?token=${payload.query.token}&email=${payload.query.email}`, { 'password': payload.password, 'password_confirmation': payload.password_confirmation })
+                .then((response) => {
+
+                    commit('SET_SUCCESS', response.message, { root: true })
+                    resolve(response)
+                })
+                .catch(error => {
+                    if (error.response.data) {
+                        commit('SET_ERRORS', error.response.data, { root: true });
+                    }
+                    reject(error);
+                })
+            commit('SET_LOADING', false, { root: true });
+        })
     }
 };
 export default {

@@ -28,6 +28,7 @@ import Productsview from './pages/products/View.vue';
 
 //Forgot Password
 import ForgotPassword from './pages/login/ForgotPassword.vue';
+import ResetPassword from './pages/login/ResetPassword.vue';
 
 Vue.use(Router);
 
@@ -98,6 +99,11 @@ const router = new Router({
             path: "/forgotpassword",
             name: "forgot.password",
             component: ForgotPassword
+        },
+        {
+            path: "/api/password/reset",
+            name: "reset.password",
+            component: ResetPassword
         },
         {
             path: "/logout",
