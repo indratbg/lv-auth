@@ -111,7 +111,7 @@ class AuthController extends Controller
     {
         $user = Socialite::driver($provider)->stateless()->user();
         //check existing user
-        if(User::where('email', $user->email)->first())
+        if(User::where('email', $user->email)->where('google_id','<>',null)->first())
         {
             $token = User::where('email', $user->email)->first()->createToken('socialite')->accessToken;
             return response()->json(['access_token' => $token]);

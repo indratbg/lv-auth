@@ -30,6 +30,13 @@ import Productsview from './pages/products/View.vue';
 import ForgotPassword from './pages/login/ForgotPassword.vue';
 import ResetPassword from './pages/login/ResetPassword.vue';
 
+
+//admin
+import AdminLogin from './pages/admin/AdminLogin.vue'
+import AdminDashboard from './pages/admin/Dashboard.vue'
+
+
+
 Vue.use(Router);
 
 const router = new Router({
@@ -73,7 +80,6 @@ const router = new Router({
                 }
             ]
         },
-
         {
             path: "/contact",
             name: "contact",
@@ -150,8 +156,17 @@ const router = new Router({
             ]
         },
         {
+            path: '/v1/control/admin/login',
+            name: 'admin.login',
+            component: AdminLogin,
+            meta: {
+                layout: 'plain-layout'
+            }
+        },
+        {
             path: "*",
-            component: NotFound
+            component: NotFound,
+
         }
     ]
 });
@@ -169,6 +184,9 @@ router.beforeEach((to, from, next) => {
         }
     } else {
         next();
+    }
+    if (to.matched.some(record => record.meta.layout)) {
+        store.commit('SET_LAYOUT', to.meta.layout)
     }
 });
 

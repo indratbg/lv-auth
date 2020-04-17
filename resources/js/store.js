@@ -23,11 +23,15 @@ const store = new Vuex.Store({
         errors: [],
         success: [],
         isLoading: false,
-        app_name: "Kaos Keren"
+        app_name: "Kaos Keren",
+        layout: 'frontend-layout'
     },
     getters: {
         loggedIn: state => {
             return state.token !== null;
+        },
+        getLayout: state => {
+            return state.layout;
         }
     },
     mutations: {
@@ -50,6 +54,9 @@ const store = new Vuex.Store({
         },
         SET_LOADING(state, payload) {
             state.isLoading = payload;
+        },
+        SET_LAYOUT(state, payload) {
+            state.layout = payload;
         }
     },
     actions: {
