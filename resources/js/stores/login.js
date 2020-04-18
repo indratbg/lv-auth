@@ -6,25 +6,24 @@ const state = () => ({});
 const mutations = {};
 
 const actions = {
-    userRegister({
+    async userRegister({
         state,
         commit
     }, payload) {
-        return new Promise((resolve, reject) => {
+
+        commit('SET_LOADING', true, {
+            root: true
+        })
+        return await new Promise((resolve, reject) => {
             $axios
                 .post(`/register`, payload)
                 .then(response => {
-                    commit(
-                        "SET_ERRORS", {
-                            errors: [],
-                            message: null
-                        }, {
-                            root: true
-                        }
-                    );
-                    commit("SET_SUCCESS", response.data, {
+                    commit("SET_SUCCESS", response.data.message, {
                         root: true
                     });
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
                     resolve(response);
                 })
                 .catch(error => {
@@ -33,16 +32,10 @@ const actions = {
                         commit("SET_ERRORS", error.response.data, {
                             root: true
                         });
-                    } else if (error.request) {
-                        // The request was made but no response was received
-                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                        // http.ClientRequest in node.js
-                        //console.log(error.request);
-                    } else {
-                        // Something happened in setting up the request that triggered an Error
-                        console.log("Error" + error.response);
                     }
-
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
                     reject(error);
                 });
         });
@@ -109,39 +102,74 @@ const actions = {
             });
         }
     },
-    sendResetPassword({
+    async sendResetPassword({
         state,
         commit
     }, payload) {
-        commit('SET_LOADING', true, { root: true });
-        return new Promise((resolve, reject) => {
-            console.log(payload)
+        commit('SET_LOADING', true, {
+            root: true
+        });
+        return await new Promise((resolve, reject) => {
             $axios.post('password/email', payload)
                 .then((response) => {
-                    console.log(response)
+                    commit('SET_SUCCESS', response.data.message, {
+                        root: true
+                    });
+                    commit('SET_LOADING', false, {
+                        root: true
+                    });
+                    resolve(response);
                 })
                 .catch(error => {
-                    console.log(error.response)
+                    if (error.response.data.message) {
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        });
+                    } else {
+                        commit('SET_ERRORS', {
+                            'message': error.response.data.error
+                        }, {
+                            root: true
+                        });
+                    }
+                    commit('SET_LOADING', false, {
+                        root: true
+                    });
+
                 })
-            commit('SET_LOADING', false, { root: true });
+
         });
     },
-    resetPassword({ state, commit }, payload) {
-        commit('SET_LOADING', true, { root: true });
+    resetPassword({
+        state,
+        commit
+    }, payload) {
+        commit('SET_LOADING', true, {
+            root: true
+        });
         return new Promise((resolve, reject) => {
-            $axios.post(`password/reset?token=${payload.query.token}&email=${payload.query.email}`, { 'password': payload.password, 'password_confirmation': payload.password_confirmation })
+            $axios.post(`password/reset?token=${payload.query.token}&email=${payload.query.email}`, {
+                    'password': payload.password,
+                    'password_confirmation': payload.password_confirmation
+                })
                 .then((response) => {
 
-                    commit('SET_SUCCESS', response.message, { root: true })
+                    commit('SET_SUCCESS', response.data.message, {
+                        root: true
+                    })
                     resolve(response)
                 })
                 .catch(error => {
                     if (error.response.data) {
-                        commit('SET_ERRORS', error.response.data, { root: true });
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        });
                     }
                     reject(error);
                 })
-            commit('SET_LOADING', false, { root: true });
+            commit('SET_LOADING', false, {
+                root: true
+            });
         })
     }
 };

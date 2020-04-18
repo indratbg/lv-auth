@@ -60,7 +60,7 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img width="32" height="32" :src="avatar" class="rounded-circle" />
+              <img v-if="avatar" width="32" height="32" :src="avatar" class="rounded-circle" />
               {{ user.name }}
               <span class="caret"></span>
             </a>

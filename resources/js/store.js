@@ -72,14 +72,14 @@ const store = new Vuex.Store({
             }
 
             //notifyjs
-            Vue.$snotify.html(`<div class="snotifyToast__title"><b>${payload.state.errors.message}</b></div>
+            Vue.$snotify.html(`<div class="snotifyToast__title"><b>${payload.state.errors.message.substr(0,40)}</b></div>
             <div class="snotifyToast__body">${message}</div> <div class="snotify-icon snotify-icon--error"></div>`, {
                 timeout: 2000,
                 showProgressBar: true,
                 closeOnClick: false,
                 pauseOnHover: true,
                 position: "rightTop",
-                titleMaxLength: 30,
+                // titleMaxLength: 20,
                 bodyMaxLength: 200,
                 type: 'error'
             });
@@ -94,7 +94,7 @@ const store = new Vuex.Store({
                 closeOnClick: false,
                 pauseOnHover: true,
                 position: "rightTop",
-                titleMaxLength: 30,
+                titleMaxLength: 20,
                 bodyMaxLength: 200,
                 type: 'success'
             });

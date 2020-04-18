@@ -23,7 +23,8 @@ class ResetPasswordController extends Controller
 
     protected function sendResetResponse(Request $request, $response)
     {
-        return response(['message' => trans($response)]);
+        // return response(['message' => trans($response)]);
+        return response(['message' => 'Password successfully reset']);
     }
 
     protected function sendResetFailedResponse(Request $request, $response)

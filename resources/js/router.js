@@ -13,7 +13,6 @@ import Login from "./pages/login/Login.vue";
 import store from "./store.js";
 import Logout from "./pages/user/Logout.vue";
 import Register from "./pages/login/Register.vue";
-import VerifyEmail from "./pages/login/Verify.vue";
 import Dashboard from "./pages/user/Dashboard.vue";
 import Account from "./pages/user/Account.vue";
 import UserDashboard from "./pages/user/User.vue";
@@ -90,12 +89,7 @@ const router = new Router({
             name: "register",
             component: Register
         },
-        {
-            path: "/verifyemail",
-            name: "register.verifyEmail",
-            component: VerifyEmail,
 
-        },
         {
             path: "/login",
             name: "login",
