@@ -1,4 +1,5 @@
 require("./bootstrap");
+require('vali-admin/docs/js/main.js')
 
 import Vue from "vue";
 import router from "./router.js";
@@ -6,14 +7,13 @@ import store from "./store.js";
 import App from "./App.vue";
 
 //Layout
-import FrontEnd from './pages/layouts/FrontEnd.vue';
-import BackEnd from './pages/layouts/BackEnd.vue';
-import Plain from './pages/layouts/Plain.vue'
+import FrontEnd from "./pages/layouts/FrontEnd.vue";
+import BackEnd from "./pages/layouts/BackEnd.vue";
+import Plain from "./pages/layouts/Plain.vue";
 
-Vue.component('frontend-layout', FrontEnd)
-Vue.component('backend-layout', BackEnd)
-Vue.component('plain-layout', Plain)
-
+Vue.component("frontend-layout", FrontEnd);
+Vue.component("backend-layout", BackEnd);
+Vue.component("plain-layout", Plain);
 
 import VueAxios from "vue-axios";
 import VueSocialauth from "vue-social-auth";
@@ -22,20 +22,18 @@ import swal from "sweetalert";
 import Snotify, {
     SnotifyPosition,
     SnotifyStyle
-} from 'vue-snotify';
+} from "vue-snotify";
 
 const options = {
     timeout: 2000,
     showProgressBar: true,
     closeOnClick: true,
     pauseOnHover: true,
-    position: 'rightTop',
+    position: "rightTop",
     titleMaxLength: 30
-}
-
+};
 
 Vue.use(Snotify, options);
-
 
 Vue.use(VueAxios, axios);
 
@@ -49,7 +47,6 @@ Vue.use(VueSocialauth, {
     }
 });
 
-
 new Vue({
     el: "#app",
     router,
@@ -59,5 +56,5 @@ new Vue({
     },
     beforeCreate() {
         Vue.$snotify = this.$snotify;
-    },
+    }
 });

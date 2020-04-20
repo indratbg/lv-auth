@@ -41,7 +41,6 @@ class AdminLoginController extends Controller
 
     public function logout()
     {
-
         auth('admin')->user()->tokens->each(function ($token, $key) {
             $token->delete();
         });

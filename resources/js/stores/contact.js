@@ -1,20 +1,11 @@
 import $axios from '../api.js'
 
 const state = () => ({
-    success: '',
-    errors: ''
+
 })
 
 const mutations = {
-    SUCCESS(state, payload) {
-        state.success = payload
-    },
-    ERROR(
-        state,
-        payload
-    ) {
-        state.errors = payload
-    }
+
 }
 
 const actions = {
@@ -28,7 +19,9 @@ const actions = {
         return new Promise((resolve, reject) => {
             $axios.post('feedback', payload)
                 .then((response) => {
-                    commit('SET_SUCCESS', response.data.success, { root: true });
+                    commit('SET_SUCCESS', response.data.success, {
+                        root: true
+                    });
                     commit('ERROR', "")
                     resolve(response.data)
                     commit('SET_LOADING', false, {
@@ -40,15 +33,13 @@ const actions = {
                         root: true
                     })
                     if (error.response) {
-                        commit('SET_ERRORS', error.response.data, { root: true });
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        });
                     } else if (error.request) {
 
-                        //console.log(error.request);
+
                     }
-
-                    // console.log(error.config);
-
-
                     reject(error)
                 })
         })

@@ -13,10 +13,6 @@ a {
     color: #2691d0;
 }
 
-body {
-    padding-top: 65px;
-}
-
 .navbar>a {
     color: blue;
 }
@@ -25,4 +21,5 @@ body {
     background-color: #3C3E3F;
 }
 
-@import '~vue-snotify/styles/material.scss'
+@import '~vue-snotify/styles/material.scss'; //sb-admin 2;
+@import '~vali-admin/docs/css/main.css';

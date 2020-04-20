@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-top:65px">
     <app-header></app-header>
     <div class="text text-center" v-if="isLoad">
       <div class="spinner-border text-danger" role="status">

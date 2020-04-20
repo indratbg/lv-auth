@@ -2,7 +2,10 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {{--  <meta name="viewport" content="width=device-width, initial-scale=1">  --}}
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
@@ -25,13 +28,18 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    {{--  <link rel="dns-prefetch" href="https://fonts.googleapis.com">  --}}
+    {{--  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  --}}
+
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    {{--  <link href="{{ asset('valid-admin/css/main.css') }}" rel="stylesheet">  --}}
+ <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body  class="app sidebar-mini">
     <div id="app">
         <app>
 
@@ -39,5 +47,7 @@
     </div>
   <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('vali-admin/js/main.js') }}"></script>
+
 </body>
 </html>

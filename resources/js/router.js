@@ -17,24 +17,21 @@ import Dashboard from "./pages/user/Dashboard.vue";
 import Account from "./pages/user/Account.vue";
 import UserDashboard from "./pages/user/User.vue";
 
-import Profile from './pages/user/Profile.vue';
-import Security from './pages/user/Security.vue';
+import Profile from "./pages/user/Profile.vue";
+import Security from "./pages/user/Security.vue";
 
 //Products
-import Products from './pages/products/Products.vue';
-import Productslist from './pages/products/Productslist.vue';
-import Productsview from './pages/products/View.vue';
+import Products from "./pages/products/Products.vue";
+import Productslist from "./pages/products/Productslist.vue";
+import Productsview from "./pages/products/View.vue";
 
 //Forgot Password
-import ForgotPassword from './pages/login/ForgotPassword.vue';
-import ResetPassword from './pages/login/ResetPassword.vue';
-
+import ForgotPassword from "./pages/login/ForgotPassword.vue";
+import ResetPassword from "./pages/login/ResetPassword.vue";
 
 //admin
-import AdminLogin from './pages/admin/AdminLogin.vue'
-import AdminDashboard from './pages/admin/Dashboard.vue'
-
-
+import AdminLogin from "./pages/admin/AdminLogin.vue";
+import AdminDashboard from "./pages/admin/Dashboard.vue";
 
 Vue.use(Router);
 
@@ -61,20 +58,20 @@ const router = new Router({
             ]
         },
         {
-            path: '/products',
+            path: "/products",
             component: Products,
             children: [{
                     path: "",
-                    name: 'products.list',
+                    name: "products.list",
                     component: Productslist
                 },
                 {
-                    path: 'view/:id',
-                    name: 'products.view',
+                    path: "view/:id",
+                    name: "products.view",
                     component: Productsview
                 },
                 {
-                    path: '*',
+                    path: "*",
                     component: NotFound
                 }
             ]
@@ -111,7 +108,7 @@ const router = new Router({
             component: Logout
         },
         {
-            path: '/auth/:provider/callback',
+            path: "/auth/:provider/callback",
             component: {
                 template: '<div class="auth-component"></div>'
             }
@@ -132,13 +129,13 @@ const router = new Router({
                     name: "user.account",
                     component: Account,
                     children: [{
-                            path: 'profile',
-                            name: 'user.account.profile',
+                            path: "profile",
+                            name: "user.account.profile",
                             component: Profile
                         },
                         {
-                            path: 'security',
-                            name: 'user.account.security',
+                            path: "security",
+                            name: "user.account.security",
                             component: Security
                         }
                     ]
@@ -150,17 +147,25 @@ const router = new Router({
             ]
         },
         {
-            path: '/v1/control/admin/login',
-            name: 'admin.login',
+            path: "/v1/control/admin/login",
+            name: "admin.login",
             component: AdminLogin,
             meta: {
-                layout: 'plain-layout'
+                layout: "plain-layout"
+            }
+        },
+        {
+            path: "/v1/control/admin/dashboard",
+            name: "admin.dashboard",
+            component: AdminDashboard,
+            meta: {
+                layout: "backend-layout",
+                requiresAuthAdmin: true
             }
         },
         {
             path: "*",
-            component: NotFound,
-
+            component: NotFound
         }
     ]
 });
@@ -180,8 +185,23 @@ router.beforeEach((to, from, next) => {
         next();
     }
     if (to.matched.some(record => record.meta.layout)) {
-        store.commit('SET_LAYOUT', to.meta.layout)
+        store.commit("SET_LAYOUT", to.meta.layout);
     }
+
+    //Admin
+    if (to.matched.some(record => record.meta.requiresAuthAdmin)) {
+        let auth = store.getters.loggedIn;
+        if (!auth) {
+            next({
+                name: "admin.login"
+            });
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
+
 });
 
 export default router;

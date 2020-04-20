@@ -1,24 +1,35 @@
 <template>
   <div>
-    <div class="container">
+    <div class="container" style="margin-top:65px">
       <div class="row justify-content-center">
         <div class="col-md-5">
           <div class="card">
             <div class="card-header text-center">Login Admin</div>
             <div class="card-body">
-              <form method="post" @submit.prevent="adminLogin">
+              <div
+                class="alert alert-danger alert-dismissible fade show"
+                role="alert"
+                v-if="errors.message"
+              >
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>{{errors.message}}</strong>
+              </div>
+
+              <form method="post" @submit.prevent="login">
                 <div class="form-group">
-                  <label for="username">Username</label>
+                  <label for="email">Email</label>
                   <input
-                    type="text"
-                    v-model="username"
+                    type="email"
+                    v-model="email"
                     class="form-control"
-                    autocomplete="username"
                     required
+                    autocomplete="username"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="username">Password</label>
+                  <label for="password">Password</label>
                   <input
                     type="password"
                     v-model="password"
@@ -39,16 +50,33 @@
   </div>
 </template>
 <script>
+import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      username: null,
-      password: null
+      email: "indra.tbg@gmail.com",
+      password: "secret"
     };
   },
+  created() {
+    if (this.loggedIn) {
+      this.$router.push({ name: "admin.dashboard" });
+    }
+  },
+  computed: {
+    ...mapState({
+      errors: state => state.errors
+    }),
+    ...mapGetters(["loggedIn"])
+  },
   methods: {
-    adminLogin() {
-      console.log("admin login");
+    ...mapActions("adminlogin", ["adminLogin"]),
+    login() {
+      this.adminLogin({ email: this.email, password: this.password }).then(
+        response => {
+          this.$router.push({ name: "admin.dashboard" });
+        }
+      );
     }
   }
 };
