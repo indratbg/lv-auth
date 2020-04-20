@@ -2189,6 +2189,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2737,7 +2739,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           err: err
         });
 
-        _this3.$store.commit('SET_ERRORS', err.response.data, {
+        _this3.$store.commit("SET_ERRORS", err.response.data, {
           root: true
         });
 
@@ -40943,7 +40945,11 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", autocomplete: "username" },
+                      attrs: {
+                        type: "text",
+                        autocomplete: "username",
+                        required: ""
+                      },
                       domProps: { value: _vm.username },
                       on: {
                         input: function($event) {
@@ -40973,7 +40979,8 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: {
                         type: "password",
-                        autocomplete: "current-password"
+                        autocomplete: "current-password",
+                        required: ""
                       },
                       domProps: { value: _vm.password },
                       on: {
@@ -41676,7 +41683,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col" }),
       _vm._v(" "),
@@ -41858,7 +41865,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col" }),
       _vm._v(" "),

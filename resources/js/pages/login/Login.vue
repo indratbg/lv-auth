@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="row">
       <div class="col"></div>
       <div class="col">
@@ -119,18 +119,17 @@ export default {
       this.$http
         .post("/sociallogin/" + provider, response)
         .then(response => {
-
-            this.$store.commit("SET_TOKEN", response.data.access_token, {
-              root: true
-            });
-            localStorage.setItem("token", response.data.access_token);
-            this.$router.push({ name: "user.dashboard" });
+          this.$store.commit("SET_TOKEN", response.data.access_token, {
+            root: true
+          });
+          localStorage.setItem("token", response.data.access_token);
+          this.$router.push({ name: "user.dashboard" });
 
           this.$store.commit("SET_LOADING", false, { root: true });
         })
         .catch(err => {
           console.log({ err: err });
-          this.$store.commit('SET_ERRORS',err.response.data,{root:true})
+          this.$store.commit("SET_ERRORS", err.response.data, { root: true });
           this.$store.commit("SET_LOADING", false, { root: true });
         });
     }

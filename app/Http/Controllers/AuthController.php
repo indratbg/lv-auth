@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Notifications\VerifyEmailNotification as NotificationsVerifyEmailNotification;
 use Illuminate\Http\Request;
 use \GuzzleHttp\Client;
 use App\User;
-use Exception;
 use Illuminate\Auth\Notifications\VerifyEmail;
-use Illuminate\Auth\Notifications\VerifyEmailNotification;
 use Illuminate\Support\Facades\Hash;
 use Socialite as Socialite;
 
@@ -40,10 +37,10 @@ class AuthController extends Controller
             }
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->getCode() === 400) {
-                abort(400,'Invalid E-Mail/Password');
-                return response()->json(['message'=>'Invalid Request. Please enter a username or a password.'. $e->getCode()]);
+                abort(400, 'Invalid E-Mail/Password');
+                return response()->json(['message' => 'Invalid Request. Please enter a username or a password.' . $e->getCode()]);
             } else if ($e->getCode() === 401) {
-                return response()->json(['message'=>'Your credentials are incorrect. Please try again '. $e->getCode()]);
+                return response()->json(['message' => 'Your credentials are incorrect. Please try again ' . $e->getCode()]);
             }
 
             return response()->json('Something went wrong on the server.' . $e->getMessage(), $e->getCode());
@@ -66,7 +63,7 @@ class AuthController extends Controller
         ]);
         $user->notify(new VerifyEmail());
 
-        return response()->json(['success' => 'User successfully registered', 'message' => 'Please check your Email for verification'], 200);
+        return response()->json(['message' => 'Please check your Email for verification'], 200);
     }
     public function logout()
     {
@@ -111,14 +108,11 @@ class AuthController extends Controller
     {
         $user = Socialite::driver($provider)->stateless()->user();
         //check existing user
-        if(User::where('email', $user->email)->where('google_id','<>',null)->first())
-        {
+        if (User::where('email', $user->email)->where('google_id', '<>', null)->first()) {
             $token = User::where('email', $user->email)->first()->createToken('socialite')->accessToken;
             return response()->json(['access_token' => $token]);
-        }
-        else
-        {
-           abort(403,'User does not exist');
+        } else {
+            abort(403, 'User does not exist');
         }
     }
 }

@@ -23,9 +23,9 @@ Route::middleware('auth:api')->group(function () {
 
 Route::post('/login', 'AuthController@login');
 Route::post('/register', 'AuthController@register');
-Route::group(['middleware' => ['auth:api']], function () {
-    Route::delete('/logout', 'AuthController@logout');
-});
+// Route::group(['middleware' => ['auth:api']], function () {
+//     Route::delete('/logout', 'AuthController@logout');
+// });
 
 //News
 Route::group(['prefix' => 'news'], function () {
@@ -52,3 +52,15 @@ Route::get('/email/verify/{id}/{hash}', 'API\VerificationController@verify')->na
 //RESET PASSWORD
 Route::post('/password/email', 'API\ForgotPasswordController@sendResetLinkEmail');
 Route::post('/password/reset', 'API\ResetPasswordController@reset')->name('password.reset');
+
+
+
+//ADMIN
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::post('/adminlogin', 'API\AdminLoginController@login');
+
+    Route::middleware('auth:admin')->group(function () {
+        Route::post('/adminlogout', 'API\AdminLoginController@logout');
+    });
+});
