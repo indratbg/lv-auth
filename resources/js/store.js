@@ -7,6 +7,7 @@ import login from "./stores/login.js";
 import user from "./stores/user.js";
 import products from "./stores/products";
 import swal from "sweetalert";
+import adminnews from './stores/admin/adminnews'
 
 
 //Admin
@@ -21,7 +22,8 @@ const store = new Vuex.Store({
         login,
         user,
         products,
-        adminlogin
+        adminlogin,
+        adminnews
     },
     state: {
         token: localStorage.getItem("token") || null,

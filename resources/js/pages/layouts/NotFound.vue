@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div class="card">
-      <div class="card-body bg-danger">
-        <h2 class="card-title text text-center text-white">
-          <i class="fa fa-1x fa-exclamation-triangle"></i> Page Not Found
-        </h2>
-      </div>
+    <div class="page-error tile">
+      <h1>
+        <i class="fa fa-exclamation-circle"></i> Error 404: Page not found
+      </h1>
+      <p>The page you have requested is not found.</p>
+      <p>
+        <a class="btn btn-primary" href="javascript:window.history.back();">Go Back</a>
+      </p>
     </div>
   </div>
 </template>

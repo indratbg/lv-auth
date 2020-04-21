@@ -4,6 +4,9 @@ import router from "./router.js";
 import store from "./store.js";
 import App from "./App.vue";
 
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use(CKEditor);
+
 //Layout
 import FrontEnd from "./pages/layouts/FrontEnd.vue";
 import BackEnd from "./pages/layouts/BackEnd.vue";

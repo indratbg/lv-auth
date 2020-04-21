@@ -31,7 +31,13 @@ import ResetPassword from "./pages/login/ResetPassword.vue";
 
 //admin
 import AdminLogin from "./pages/admin/AdminLogin.vue";
+import AdminParent from './pages/admin/AdminParent.vue';
 import AdminDashboard from "./pages/admin/Dashboard.vue";
+
+//News
+import AdminNews from './pages/admin/news/News.vue';
+import AdminNewsList from './pages/admin/news/List.vue';
+import AdminNewsAdd from './pages/admin/news/Add.vue';
 
 Vue.use(Router);
 
@@ -155,13 +161,46 @@ const router = new Router({
             }
         },
         {
-            path: "/v1/control/admin/dashboard",
-            name: "admin.dashboard",
-            component: AdminDashboard,
+            path: "/v1/control/admin",
+            component: AdminParent,
             meta: {
                 layout: "backend-layout",
                 requiresAuthAdmin: true
-            }
+            },
+            children: [{
+                    path: '/',
+                    name: 'admin.dashboard',
+                    component: AdminDashboard,
+                    meta: {
+                        layout: "backend-layout"
+                    }
+                },
+                {
+                    path: 'news',
+
+                    component: AdminNews,
+                    meta: {
+                        layout: "backend-layout"
+                    },
+                    children: [{
+                            path: 'list',
+                            name: 'admin.news.list',
+                            component: AdminNewsList,
+                            meta: {
+                                layout: "backend-layout"
+                            },
+                        },
+                        {
+                            path: 'add',
+                            name: 'admin.news.add',
+                            component: AdminNewsAdd,
+                            meta: {
+                                layout: "backend-layout"
+                            },
+                        }
+                    ]
+                }
+            ]
         },
         {
             path: "*",

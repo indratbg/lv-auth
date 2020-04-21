@@ -62,5 +62,7 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::middleware('auth:admin')->group(function () {
         Route::post('/adminlogout', 'API\AdminLoginController@logout');
+        //News
+        Route::post('news/store', 'API\NewsController@store');
     });
 });

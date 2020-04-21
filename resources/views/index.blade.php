@@ -71,8 +71,18 @@
 
         </app>
     </div>
-  <!-- Scripts -->
-  <script src="{{ mix('js/app.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{asset('vali-admin/js/pace.min.js')  }}"></script>
+    {{--  <script src="{{asset('vali-admin/js/bootstrap-datepicker.min.js')  }}"></script>  --}}
 
 </body>
 </html>
+<script>
+{{--
+    $('.tdate').datepicker({
+    format: "dd/mm/yyyy",
+    autoclose: true,
+    todayHighlight: true
+    });  --}}
+</script>

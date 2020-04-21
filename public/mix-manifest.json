@@ -1,4 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=46e181427e501ea14727",
-    "/css/app.css": "/css/app.css?id=8306c62fc1efc7509111"
+    "/js/app.js": "/js/app.js?id=7bf00393e82479fe5db9",
+    "/css/app.css": "/css/app.css?id=8306c62fc1efc7509111",
+    "/vali-admin/js/pace.min.js": "/vali-admin/js/pace.min.js?id=248f37358dd94120dc84",
+    "/vali-admin/js/bootstrap-datepicker.min.js": "/vali-admin/js/bootstrap-datepicker.min.js?id=47f56600434ab8c2668d"
 }
