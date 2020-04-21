@@ -12,25 +12,9 @@ const mix = require("laravel-mix");
  */
 
 mix.js("resources/js/app.js", "public/js").sass(
-        "resources/sass/app.scss",
-        "public/css"
-    )
-    .copy(
-        "node_modules/vali-admin/docs/js/main.js",
-        "public/vali-admin/js"
-    );
-// .copy(
-//     "node_modules/vali-admin/docs/js/jquery-3.3.1.min.js",
-//     "public/vali-admin/js"
-// )
-// .copy(
-//     "node_modules/vali-admin/docs/js/popper.min.js",
-//     "public/vali-admin/js"
-// )
-// .copy(
-//     "node_modules/vali-admin/docs/css/main.css",
-//     "public/vali-admin/css"
-// );
+    "resources/sass/app.scss",
+    "public/css"
+);
 
 // if (mix.inProduction()) {
 mix.version();

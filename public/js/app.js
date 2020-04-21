@@ -2209,6 +2209,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2227,6 +2270,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     errors: function errors(state) {
       return state.errors;
+    },
+    app_name: function app_name(state) {
+      return state.app_name;
     }
   }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(["loggedIn"])),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("adminlogin", ["adminLogin"]), {
@@ -2261,11 +2307,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log("dashboard admin");
-  }
-});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
 
@@ -2774,69 +2877,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    // (function() {
+    //   "use strict";
+    var treeviewMenu = $(".app-menu"); // Toggle Sidebar
+
+    $('[data-toggle="sidebar"]').click(function (event) {
+      event.preventDefault();
+      $(".app").toggleClass("sidenav-toggled");
+    }); // Activate sidebar treeview toggle
+
+    $("[data-toggle='treeview']").click(function (event) {
+      event.preventDefault();
+
+      if (!$(this).parent().hasClass("is-expanded")) {
+        treeviewMenu.find("[data-toggle='treeview']").parent().removeClass("is-expanded");
+      }
+
+      $(this).parent().toggleClass("is-expanded");
+    }); // Set initial active toggle
+
+    $("[data-toggle='treeview.'].is-expanded").parent().toggleClass("is-expanded"); //Activate bootstrip tooltips
+
+    $("[data-toggle='tooltip']").tooltip(); // })();
+  },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])("adminlogin", ["adminLogout"]), {
     logout: function logout() {
       var _this = this;
@@ -40894,44 +40960,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "./node_modules/vali-admin/docs/js/main.js":
-/*!*************************************************!*\
-  !*** ./node_modules/vali-admin/docs/js/main.js ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-(function () {
-	"use strict";
-
-	var treeviewMenu = $('.app-menu');
-
-	// Toggle Sidebar
-	$('[data-toggle="sidebar"]').click(function(event) {
-		event.preventDefault();
-		$('.app').toggleClass('sidenav-toggled');
-	});
-
-	// Activate sidebar treeview toggle
-	$("[data-toggle='treeview']").click(function(event) {
-		event.preventDefault();
-		if(!$(this).parent().hasClass('is-expanded')) {
-			treeviewMenu.find("[data-toggle='treeview']").parent().removeClass('is-expanded');
-		}
-		$(this).parent().toggleClass('is-expanded');
-	});
-
-	// Set initial active toggle
-	$("[data-toggle='treeview.'].is-expanded").parent().toggleClass('is-expanded');
-
-	//Activate bootstrip tooltips
-	$("[data-toggle='tooltip']").tooltip();
-
-})();
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-axios/dist/vue-axios.min.js":
 /*!******************************************************!*\
   !*** ./node_modules/vue-axios/dist/vue-axios.min.js ***!
@@ -41377,119 +41405,98 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "div",
-      { staticClass: "container", staticStyle: { "margin-top": "65px" } },
-      [
-        _c("div", { staticClass: "row justify-content-center" }, [
-          _c("div", { staticClass: "col-md-5" }, [
-            _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-header text-center" }, [
-                _vm._v("Login Admin")
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "login-content" }, [
+      _c("div", { staticClass: "logo" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.app_name))])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "login-box" }, [
+        _c(
+          "form",
+          {
+            staticClass: "login-form",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.login($event)
+              }
+            }
+          },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { staticClass: "control-label" }, [
+                _vm._v("USERNAME")
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _vm.errors.message
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "alert alert-danger alert-dismissible fade show",
-                        attrs: { role: "alert" }
-                      },
-                      [
-                        _vm._m(0),
-                        _vm._v(" "),
-                        _c("strong", [_vm._v(_vm._s(_vm.errors.message))])
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "form",
+              _c("input", {
+                directives: [
                   {
-                    attrs: { method: "post" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.login($event)
-                      }
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.email,
+                    expression: "email"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "email",
+                  placeholder: "Email",
+                  autofocus: "",
+                  autocomplete: "username"
+                },
+                domProps: { value: _vm.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
                     }
-                  },
-                  [
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "email" } }, [
-                        _vm._v("Email")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.email,
-                            expression: "email"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "email",
-                          required: "",
-                          autocomplete: "username"
-                        },
-                        domProps: { value: _vm.email },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.email = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "form-group" }, [
-                      _c("label", { attrs: { for: "password" } }, [
-                        _vm._v("Password")
-                      ]),
-                      _vm._v(" "),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.password,
-                            expression: "password"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "password",
-                          autocomplete: "current-password",
-                          required: ""
-                        },
-                        domProps: { value: _vm.password },
-                        on: {
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.password = $event.target.value
-                          }
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _vm._m(1)
-                  ]
-                )
-              ])
-            ])
-          ])
-        ])
-      ]
-    )
+                    _vm.email = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", { staticClass: "control-label" }, [
+                _vm._v("PASSWORD")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.password,
+                    expression: "password"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "password",
+                  placeholder: "Password",
+                  autocomplete: "current-password"
+                },
+                domProps: { value: _vm.password },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.password = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(2)
+          ]
+        )
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -41497,28 +41504,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
+    return _c("section", { staticClass: "material-half-bg" }, [
+      _c("div", { staticClass: "cover" })
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("input", {
-        staticClass: "btn btn-block btn-primary",
-        attrs: { type: "submit", value: "Login" }
-      })
+    return _c("h3", { staticClass: "login-head" }, [
+      _c("i", { staticClass: "fa fa-lg fa-fw fa-user" }),
+      _vm._v("SIGN IN\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group btn-container" }, [
+      _c("button", { staticClass: "btn btn-primary btn-block" }, [
+        _c("i", { staticClass: "fa fa-sign-in fa-lg fa-fw" }),
+        _vm._v("SIGN IN\n          ")
+      ])
     ])
   }
 ]
@@ -41550,7 +41557,78 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("This is dashboard admin123")])])
+    return _c("div", [
+      _c("div", { staticClass: "app-title" }, [
+        _c("div", [
+          _c("h1", [
+            _c("i", { staticClass: "fa fa-dashboard" }),
+            _vm._v(" Dashboard\n      ")
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("A free and open source Bootstrap 4 admin template")])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "app-breadcrumb breadcrumb" }, [
+          _c("li", { staticClass: "breadcrumb-item" }, [
+            _c("i", { staticClass: "fa fa-home fa-lg" })
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "breadcrumb-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Dashboard")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
+          _c("div", { staticClass: "widget-small primary coloured-icon" }, [
+            _c("i", { staticClass: "icon fa fa-users fa-3x" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "info" }, [
+              _c("h4", [_vm._v("Users")]),
+              _vm._v(" "),
+              _c("p", [_c("b", [_vm._v("5")])])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
+          _c("div", { staticClass: "widget-small info coloured-icon" }, [
+            _c("i", { staticClass: "icon fa fa-thumbs-o-up fa-3x" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "info" }, [
+              _c("h4", [_vm._v("Likes")]),
+              _vm._v(" "),
+              _c("p", [_c("b", [_vm._v("25")])])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
+          _c("div", { staticClass: "widget-small warning coloured-icon" }, [
+            _c("i", { staticClass: "icon fa fa-files-o fa-3x" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "info" }, [
+              _c("h4", [_vm._v("Uploades")]),
+              _vm._v(" "),
+              _c("p", [_c("b", [_vm._v("10")])])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
+          _c("div", { staticClass: "widget-small danger coloured-icon" }, [
+            _c("i", { staticClass: "icon fa fa-star fa-3x" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "info" }, [
+              _c("h4", [_vm._v("Stars")]),
+              _vm._v(" "),
+              _c("p", [_c("b", [_vm._v("500")])])
+            ])
+          ])
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -41996,7 +42074,7 @@ var render = function() {
     _vm._v(" "),
     _vm._m(5),
     _vm._v(" "),
-    _vm._m(6)
+    _c("main", { staticClass: "app-content" }, [_c("router-view")], 1)
   ])
 }
 var staticRenderFns = [
@@ -42700,83 +42778,6 @@ var staticRenderFns = [
               _c("span", { staticClass: "app-menu__label" }, [_vm._v("Docs")])
             ]
           )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("main", { staticClass: "app-content" }, [
-      _c("div", { staticClass: "app-title" }, [
-        _c("div", [
-          _c("h1", [
-            _c("i", { staticClass: "fa fa-dashboard" }),
-            _vm._v(" Dashboard\n        ")
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("A free and open source Bootstrap 4 admin template")])
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "app-breadcrumb breadcrumb" }, [
-          _c("li", { staticClass: "breadcrumb-item" }, [
-            _c("i", { staticClass: "fa fa-home fa-lg" })
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "breadcrumb-item" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Dashboard")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
-          _c("div", { staticClass: "widget-small primary coloured-icon" }, [
-            _c("i", { staticClass: "icon fa fa-users fa-3x" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "info" }, [
-              _c("h4", [_vm._v("Users")]),
-              _vm._v(" "),
-              _c("p", [_c("b", [_vm._v("5")])])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
-          _c("div", { staticClass: "widget-small info coloured-icon" }, [
-            _c("i", { staticClass: "icon fa fa-thumbs-o-up fa-3x" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "info" }, [
-              _c("h4", [_vm._v("Likes")]),
-              _vm._v(" "),
-              _c("p", [_c("b", [_vm._v("25")])])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
-          _c("div", { staticClass: "widget-small warning coloured-icon" }, [
-            _c("i", { staticClass: "icon fa fa-files-o fa-3x" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "info" }, [
-              _c("h4", [_vm._v("Uploades")]),
-              _vm._v(" "),
-              _c("p", [_c("b", [_vm._v("10")])])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 col-lg-3" }, [
-          _c("div", { staticClass: "widget-small danger coloured-icon" }, [
-            _c("i", { staticClass: "icon fa fa-star fa-3x" }),
-            _vm._v(" "),
-            _c("div", { staticClass: "info" }, [
-              _c("h4", [_vm._v("Stars")]),
-              _vm._v(" "),
-              _c("p", [_c("b", [_vm._v("500")])])
-            ])
-          ])
         ])
       ])
     ])
@@ -63617,8 +63618,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var vue_snotify__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-snotify */ "./node_modules/vue-snotify/vue-snotify.esm.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! vali-admin/docs/js/main.js */ "./node_modules/vali-admin/docs/js/main.js");
 
 
 

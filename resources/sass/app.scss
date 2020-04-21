@@ -3,7 +3,7 @@
 // Variables
 @import "variables";
 // Bootstrap
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap";
 @import "~font-awesome";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
@@ -22,4 +22,4 @@ a {
 }
 
 @import '~vue-snotify/styles/material.scss'; //sb-admin 2;
-@import '~vali-admin/docs/css/main.css';
+@import '~vali-admin/src/sass/main.scss';

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="container" style="margin-top:65px">
+    <!--<div class="container" style="margin-top:65px">
+
       <div class="row justify-content-center">
         <div class="col-md-5">
           <div class="card">
@@ -46,7 +47,49 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
+    <section class="material-half-bg">
+      <div class="cover"></div>
+    </section>
+    <section class="login-content">
+      <div class="logo">
+        <h1>{{app_name}}</h1>
+      </div>
+      <div class="login-box">
+        <form class="login-form" @submit.prevent="login">
+          <h3 class="login-head">
+            <i class="fa fa-lg fa-fw fa-user"></i>SIGN IN
+          </h3>
+          <div class="form-group">
+            <label class="control-label">USERNAME</label>
+            <input
+              class="form-control"
+              type="email"
+              placeholder="Email"
+              autofocus
+              v-model="email"
+              autocomplete="username"
+            />
+          </div>
+          <div class="form-group">
+            <label class="control-label">PASSWORD</label>
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Password"
+              v-model="password"
+              autocomplete="current-password"
+            />
+          </div>
+
+          <div class="form-group btn-container">
+            <button class="btn btn-primary btn-block">
+              <i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
   </div>
 </template>
 <script>
@@ -65,7 +108,8 @@ export default {
   },
   computed: {
     ...mapState({
-      errors: state => state.errors
+      errors: state => state.errors,
+      app_name: state => state.app_name
     }),
     ...mapGetters(["loggedIn"])
   },

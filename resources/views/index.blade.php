@@ -28,16 +28,42 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{--  <link rel="dns-prefetch" href="https://fonts.googleapis.com">  --}}
+    <link rel="dns-prefetch" href="ttps://cdnjs.cloudflare.com">
     {{--  <link rel="dns-prefetch" href="https://maxcdn.bootstrapcdn.com">  --}}
 
     <meta http-equiv="x-dns-prefetch-control" content="on">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    {{--  <link href="{{ asset('valid-admin/css/main.css') }}" rel="stylesheet">  --}}
+
  <!-- Font-icon css-->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {{--  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">  --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pace-inactive {
+  display: none;
+}
+
+.pace .pace-progress {
+  background: #da2e3f;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  right: 100%;
+  width: 100%;
+  height: 2px;
+}
+
+    </style>
 </head>
 <body  class="app sidebar-mini">
     <div id="app">
@@ -46,8 +72,7 @@
         </app>
     </div>
   <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}"></script>
-    <script src="{{ asset('vali-admin/js/main.js') }}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
 
 </body>
 </html>

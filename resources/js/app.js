@@ -1,6 +1,4 @@
 require("./bootstrap");
-require('vali-admin/docs/js/main.js')
-
 import Vue from "vue";
 import router from "./router.js";
 import store from "./store.js";
