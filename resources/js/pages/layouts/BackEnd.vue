@@ -120,14 +120,10 @@
           </a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li>
-              <a class="dropdown-item" href="page-user.html">
-                <i class="fa fa-cog fa-lg"></i> Settings
-              </a>
+                <router-link class="dropdown-item" :to="{name:'admin.setting'}"><i class="fa fa-cog fa-lg"></i> Setting</router-link>
             </li>
             <li>
-              <a class="dropdown-item" href="page-user.html">
-                <i class="fa fa-user fa-lg"></i> Profile
-              </a>
+                <router-link class="dropdown-item" :to="{name:'admin.profile'}"><i class="fa fa-user fa-lg"></i> Profile</router-link>
             </li>
             <li>
               <a class="dropdown-item" href="#" @click.prevent="logout">
@@ -166,30 +162,13 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <a class="treeview-item" href="bootstrap-components.html">
-                <i class="icon fa fa-circle-o"></i> Bootstrap Elements
-              </a>
+                <router-link class="treeview-item" :to="{name:'admin.products.list'}"> <i class="icon fa fa-list"></i> List Products</router-link>
             </li>
             <li>
-              <a
-                class="treeview-item"
-                href="https://fontawesome.com/v4.7.0/icons/"
-                target="_blank"
-                rel="noopener"
-              >
-                <i class="icon fa fa-circle-o"></i> Font Icons
-              </a>
+                <router-link class="treeview-item" :to="{name:'admin.products.stock'}"> <i class="icon fa fa-bitbucket"></i> Stock</router-link>
             </li>
-            <li>
-              <a class="treeview-item" href="ui-cards.html">
-                <i class="icon fa fa-circle-o"></i> Cards
-              </a>
-            </li>
-            <li>
-              <a class="treeview-item" href="widgets.html">
-                <i class="icon fa fa-circle-o"></i> Widgets
-              </a>
-            </li>
+
+
           </ul>
         </li>
         <li>

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Lato:300,400,400i,700);@import url(https://fonts.googleapis.com/css?family=Niconne);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,400i,700);@import url(https://fonts.googleapis.com/css?family=Niconne);@charset "UTF-8";
 
 /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -8982,7 +8982,7 @@ a {
 }
 
 .swal-overlay {
-  background-color: #3C3E3F;
+  background-color: #3c3e3f;
 }
 
 .snotifyToast {

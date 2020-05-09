@@ -32,6 +32,11 @@ const actions = {
                     reject(error);
                 })
         })
+    },
+    async getNews() {
+        return await new Promise((resolve, reject) => {
+            //$axios.get()
+        })
     }
 }
 

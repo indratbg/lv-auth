@@ -39,6 +39,18 @@ import AdminNews from './pages/admin/news/News.vue';
 import AdminNewsList from './pages/admin/news/List.vue';
 import AdminNewsAdd from './pages/admin/news/Add.vue';
 
+
+//Setting
+import AdminSetting from './pages/admin/setting/Setting.vue';
+
+//Profile
+import AdminProfile from './pages/admin/profile/Profile.vue';
+
+//Products
+import AdminProducts from './pages/admin/products/Products.vue';
+import AdminProductsList from './pages/admin/products/List.vue';
+import AdminProductsStock from './pages/admin/products/Stock.vue';
+
 Vue.use(Router);
 
 const router = new Router({
@@ -177,7 +189,6 @@ const router = new Router({
                 },
                 {
                     path: 'news',
-
                     component: AdminNews,
                     meta: {
                         layout: "backend-layout"
@@ -196,6 +207,43 @@ const router = new Router({
                             component: AdminNewsAdd,
                             meta: {
                                 layout: "backend-layout"
+                            },
+                        }
+                    ]
+                },
+                {
+                    path: 'setting',
+                    name: 'admin.setting',
+                    component: AdminSetting,
+                    meta: {
+                        layout: 'backend-layout'
+                    }
+                },
+                {
+                    path: 'profile',
+                    name: 'admin.profile',
+                    component: AdminProfile,
+                    meta: {
+                        layout: 'backend-layout'
+                    }
+                },
+                {
+                    path: 'products',
+                    component: AdminProducts,
+                    children: [{
+                            path: '',
+                            name: 'admin.products.list',
+                            component: AdminProductsList,
+                            meta: {
+                                layout: 'backend-layout'
+                            },
+                        },
+                        {
+                            path: 'stock',
+                            name: 'admin.products.stock',
+                            component: AdminProductsStock,
+                            meta: {
+                                layout: 'backend-layout'
                             },
                         }
                     ]

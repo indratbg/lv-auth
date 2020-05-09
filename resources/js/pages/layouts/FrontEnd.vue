@@ -6,6 +6,7 @@
         <span class="sr-only text-center">Loading...</span>
       </div>
     </div>
+
     <vue-snotify></vue-snotify>
     <router-view></router-view>
     <app-footer></app-footer>

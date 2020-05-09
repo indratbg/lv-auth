@@ -16,7 +16,6 @@ mix.js("resources/js/app.js", "public/js").sass(
         "public/css"
     )
     .copy('node_modules/vali-admin/docs/js/plugins/pace.min.js', 'public/vali-admin/js');
-// .copy('node_modules/vali-admin/docs/js/plugins/bootstrap-datepicker.min.js', 'public/vali-admin/js');
 
 // if (mix.inProduction()) {
 mix.version();

@@ -22,7 +22,6 @@ const actions = {
                     commit('SET_SUCCESS', response.data.success, {
                         root: true
                     });
-                    commit('ERROR', "")
                     resolve(response.data)
                     commit('SET_LOADING', false, {
                         root: true
@@ -36,9 +35,6 @@ const actions = {
                         commit('SET_ERRORS', error.response.data, {
                             root: true
                         });
-                    } else if (error.request) {
-
-
                     }
                     reject(error)
                 })

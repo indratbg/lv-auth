@@ -40,7 +40,7 @@
           <div class="form-group">
             <label class="control-label">Body</label>
             <!-- <textarea rows="10" class="form-control"></textarea> -->
-            <ckeditor :editor="editor" v-model="field.body" :config="editorConfig"></ckeditor>
+            <ckeditor :editor="editor"  v-model="field.body" :config="editorConfig"></ckeditor>
           </div>
           <div class="form-group">
             <button class="btn btn-outline-dark" @click.prevent="back">Back</button>
@@ -54,18 +54,24 @@
 </template>
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment'
 import { mapActions } from "vuex";
 export default {
   data() {
     return {
       editor: ClassicEditor,
       editorConfig: {
+        //   plugins:[],
+          toolbar:{
+            //  items:['heading']
+          },
+           language: 'id'
         // The configuration of the editor.
       },
       field: {
-        post_date: null,
-        title: null,
-        category: null,
+        post_date: this.todayDate(),
+        title: 'This is title example',
+        category: 'Article',
         body: "Example of body content"
       }
     };
@@ -79,6 +85,11 @@ export default {
       this.saveNews(this.field).then(response => {
         this.$router.push({ name: "admin.news.list" });
       });
+    },
+    todayDate()
+    {
+        let today = new Date();
+        return today.getFullYear()+'-'+String(today.getMonth()).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
     }
   }
 };

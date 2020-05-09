@@ -2,19 +2,19 @@
   <div>
     <div class="row">
       <div class="col-md-8">
-        <div class="card mt-2" v-for="news in listNews" :key="news.id">
-          <div class="card-body">
-            <h4 class="card-title">
-              <router-link
-                :to="{
+        <div class="tile mt-2" v-for="news in listNews" :key="news.id">
+          <h4 class="tile-title">
+            <router-link
+              :to="{
                                     name: 'news.view',
                                     params: {
                                         post_date: news.post_date,
                                         title: news.title
                                     }
                                 }"
-              >{{ news.title }}</router-link>
-            </h4>
+            >{{ news.title }}</router-link>
+          </h4>
+          <div class="tile-body">
             <p class="text text-info" style="font-size:0.7em">
               <span class="fa fa-clock"></span>
               {{ news.created_at }}

@@ -30,7 +30,7 @@ const store = new Vuex.Store({
         errors: [],
         success: [],
         isLoading: false,
-        app_name: "Kaos Keren",
+        app_name: "Kaos Harian",
         layout: 'frontend-layout'
     },
     getters: {

@@ -1,5 +1,5 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+// @import url("https://fonts.googleapis.com/css?family=Nunito");
 // Variables
 @import "variables";
 // Bootstrap
@@ -18,8 +18,8 @@ a {
 }
 
 .swal-overlay {
-    background-color: #3C3E3F;
+    background-color: #3c3e3f;
 }
 
-@import '~vue-snotify/styles/material.scss'; //sb-admin 2;
-@import '~vali-admin/src/sass/main.scss';
+@import "~vue-snotify/styles/material.scss"; //sb-admin 2;
+@import "~vali-admin/src/sass/main.scss";
