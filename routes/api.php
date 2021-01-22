@@ -42,6 +42,10 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/{id}', 'API\ProductsController@show');
 });
 
+Route::get('topFour', 'API\ProductsController@topFour');
+
+Route::get('footer/{type}', 'API\FooterController@footer');
+
 //Feedback
 Route::post('/feedback', 'API\FeedbackController@store');
 
@@ -61,8 +65,19 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('/adminlogin', 'API\AdminLoginController@login');
 
     Route::middleware('auth:admin')->group(function () {
+
+        Route::get('/user', function (Request $request) {
+            return $request->user();
+        });
         Route::post('/adminlogout', 'API\AdminLoginController@logout');
         //News
         Route::post('news/store', 'API\NewsController@store');
+        Route::get('news/getEditableNews', 'API\NewsController@getEditableNews');
+        Route::get('news/view/{post_date}/{title}', 'API\NewsController@show');
+        Route::post('news/update/{post_date}/{title}', 'API\NewsController@update');
+        Route::delete('news/delete/{post_date}/{title}', 'API\NewsController@destroy');
+
+        //FOoter
+        Route::post('footer/store', 'API\FooterController@store');
     });
 });

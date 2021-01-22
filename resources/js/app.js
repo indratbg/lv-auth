@@ -5,8 +5,8 @@ import store from "./store.js";
 import App from "./App.vue";
 
 import CKEditor from '@ckeditor/ckeditor5-vue';
-Vue.use(CKEditor);
 
+Vue.use(CKEditor);
 //Layout
 import FrontEnd from "./pages/layouts/FrontEnd.vue";
 import BackEnd from "./pages/layouts/BackEnd.vue";
@@ -24,6 +24,7 @@ import Snotify, {
     SnotifyPosition,
     SnotifyStyle
 } from "vue-snotify";
+
 
 const options = {
     timeout: 2000,
@@ -48,10 +49,27 @@ Vue.use(VueSocialauth, {
     }
 });
 
+
+//Datatable
+import BeeGridTable from 'beegridtable';
+// essential !
+import "beegridtable/dist/styles/beegridtable.css";
+
+Vue.use(BeeGridTable, {
+    capture: true,
+    transfer: true,
+    zIndex: 2000, //set z-index of beegridtable
+});
+
+Vue.config.productionTip = false;
+
+
+
 new Vue({
     el: "#app",
     router,
     store,
+    // i18n,
     components: {
         App
     },

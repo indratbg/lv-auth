@@ -8,6 +8,7 @@ import NotFound from "./pages/layouts/NotFound.vue";
 import News from "./pages/news/News.vue";
 import Newslist from "./pages/news/Newslist.vue";
 import ViewNews from "./pages/news/ViewNews.vue";
+import AdminNewsEdit from "./pages/admin/news/Edit.vue";
 
 import Login from "./pages/login/Login.vue";
 import store from "./store.js";
@@ -31,25 +32,35 @@ import ResetPassword from "./pages/login/ResetPassword.vue";
 
 //admin
 import AdminLogin from "./pages/admin/AdminLogin.vue";
-import AdminParent from './pages/admin/AdminParent.vue';
+import AdminParent from "./pages/admin/AdminParent.vue";
 import AdminDashboard from "./pages/admin/Dashboard.vue";
 
 //News
-import AdminNews from './pages/admin/news/News.vue';
-import AdminNewsList from './pages/admin/news/List.vue';
-import AdminNewsAdd from './pages/admin/news/Add.vue';
+import AdminNews from "./pages/admin/news/News.vue";
+import AdminNewsList from "./pages/admin/news/List.vue";
+import AdminNewsAdd from "./pages/admin/news/Add.vue";
+import AdminNewsView from "./pages/admin/news/View.vue";
 
+//footer
+import AdminFooter from "./pages/admin/footer/Footer.vue";
+import AdminFooterList from "./pages/admin/footer/List.vue";
+import AdminFooterAdd from "./pages/admin/footer/Add.vue";
 
 //Setting
-import AdminSetting from './pages/admin/setting/Setting.vue';
+import AdminSetting from "./pages/admin/setting/Setting.vue";
 
 //Profile
-import AdminProfile from './pages/admin/profile/Profile.vue';
+import AdminProfile from "./pages/admin/profile/Profile.vue";
 
 //Products
-import AdminProducts from './pages/admin/products/Products.vue';
-import AdminProductsList from './pages/admin/products/List.vue';
-import AdminProductsStock from './pages/admin/products/Stock.vue';
+import AdminProducts from "./pages/admin/products/Products.vue";
+import AdminProductsList from "./pages/admin/products/List.vue";
+import AdminProductsStock from "./pages/admin/products/Stock.vue";
+
+//Orders
+import AdminOrders from "./pages/admin/orders/Order.vue";
+import AdminOrdersList from "./pages/admin/orders/List.vue";
+import AdminOrdersInvoice from "./pages/admin/orders/Invoice.vue";
 
 Vue.use(Router);
 
@@ -180,71 +191,132 @@ const router = new Router({
                 requiresAuthAdmin: true
             },
             children: [{
-                    path: '/',
-                    name: 'admin.dashboard',
+                    path: "/",
+                    name: "admin.dashboard",
                     component: AdminDashboard,
                     meta: {
                         layout: "backend-layout"
                     }
                 },
                 {
-                    path: 'news',
+                    path: "footer",
+                    component: AdminFooter,
+                    meta: {
+                        layout: "backend-layout"
+                    },
+                    children: [{
+                            path: "list",
+                            name: "admin.footer.list",
+                            component: AdminFooterList,
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "add",
+                            name: "admin.footer.add",
+                            component: AdminFooterAdd,
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        }
+                    ]
+                },
+                {
+                    path: "news",
                     component: AdminNews,
                     meta: {
                         layout: "backend-layout"
                     },
                     children: [{
-                            path: 'list',
-                            name: 'admin.news.list',
+                            path: "list",
+                            name: "admin.news.list",
                             component: AdminNewsList,
                             meta: {
                                 layout: "backend-layout"
-                            },
+                            }
                         },
                         {
-                            path: 'add',
-                            name: 'admin.news.add',
+                            path: "add",
+                            name: "admin.news.add",
                             component: AdminNewsAdd,
                             meta: {
                                 layout: "backend-layout"
-                            },
+                            }
+                        },
+                        {
+                            path: "view/:post_date/:title",
+                            name: "admin.news.view",
+                            component: AdminNewsView,
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "edit/:post_date/:title",
+                            name: "admin.news.edit",
+                            component: AdminNewsEdit,
+                            meta: {
+                                layout: "backend-layout"
+                            }
                         }
                     ]
                 },
                 {
-                    path: 'setting',
-                    name: 'admin.setting',
+                    path: "setting",
+                    name: "admin.setting",
                     component: AdminSetting,
                     meta: {
-                        layout: 'backend-layout'
+                        layout: "backend-layout"
                     }
                 },
                 {
-                    path: 'profile',
-                    name: 'admin.profile',
+                    path: "profile",
+                    name: "admin.profile",
                     component: AdminProfile,
                     meta: {
-                        layout: 'backend-layout'
+                        layout: "backend-layout"
                     }
                 },
                 {
-                    path: 'products',
+                    path: "products",
                     component: AdminProducts,
                     children: [{
-                            path: '',
-                            name: 'admin.products.list',
+                            path: "",
+                            name: "admin.products.list",
                             component: AdminProductsList,
                             meta: {
-                                layout: 'backend-layout'
-                            },
+                                layout: "backend-layout"
+                            }
                         },
                         {
-                            path: 'stock',
-                            name: 'admin.products.stock',
+                            path: "stock",
+                            name: "admin.products.stock",
                             component: AdminProductsStock,
                             meta: {
-                                layout: 'backend-layout'
-                            },
+                                layout: "backend-layout"
+                            }
+                        }
+                    ]
+                },
+                {
+                    path: "orders",
+                    component: AdminOrders,
+                    children: [{
+                            path: "",
+                            name: "admin.orders.list",
+                            component: AdminOrdersList,
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "invoice",
+                            name: "admin.orders.invoice",
+                            component: AdminOrdersInvoice,
+                            meta: {
+                                layout: "backend-layout"
+                            }
                         }
                     ]
                 }
@@ -288,7 +360,6 @@ router.beforeEach((to, from, next) => {
     } else {
         next();
     }
-
 });
 
 export default router;

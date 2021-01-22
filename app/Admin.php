@@ -11,5 +11,5 @@ class Admin extends Authenticatable
     use HasApiTokens, Notifiable;
 
     protected $table = 'admin';
-    protected $hidden = ['pasword'];
+    protected $hidden = ['password'];
 }

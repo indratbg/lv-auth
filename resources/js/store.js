@@ -1,13 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import home from "./stores/home.js";
+import footer from "./stores/footer.js";
 import news from "./stores/news.js";
 import contact from "./stores/contact.js";
 import login from "./stores/login.js";
 import user from "./stores/user.js";
+import admin from "./stores/admin/admin.js";
 import products from "./stores/products";
 import swal from "sweetalert";
-import adminnews from './stores/admin/adminnews'
+import adminnews from './stores/admin/adminnews';
+import adminfooter from './stores/admin/adminfooter.js';
 
 
 //Admin
@@ -17,13 +20,17 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     modules: {
+        home,
+        footer,
         news,
         contact,
         login,
         user,
         products,
+        admin,
         adminlogin,
-        adminnews
+        adminnews,
+        adminfooter
     },
     state: {
         token: localStorage.getItem("token") || null,
@@ -101,7 +108,7 @@ const store = new Vuex.Store({
                 closeOnClick: false,
                 pauseOnHover: true,
                 position: "rightTop",
-                titleMaxLength: 20,
+                titleMaxLength: 10,
                 bodyMaxLength: 200,
                 type: 'success'
             });

@@ -1,0 +1,125 @@
+<template>
+  <div>
+    <div class="app-title">
+      <div>
+        <h1>
+          <i class="fa fa-newspaper-o"></i> View {{ this.$route.params.title }}
+        </h1>
+        <p>This is purpose to view detail news</p>
+      </div>
+      <ul class="app-breadcrumb breadcrumb">
+        <li class="breadcrumb-item">
+          <i class="fa fa-home fa-lg"></i>
+        </li>
+        <li class="breadcrumb-item">
+          <router-link :to="{ name: 'admin.news.list' }">List News</router-link>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+      <div class="tile">
+        <div class="form-group">
+          <label>Post Date</label>
+          <input
+            type="text"
+            v-model="post_date"
+            class="form-control col-sm-2"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" v-model="title" class="form-control" disabled />
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" v-model="category" class="form-control" disabled />
+        </div>
+        <div class="form-group">
+          <label>Content</label>
+
+          <ckeditor
+            :editor="editor"
+            v-model="body"
+            :config="editorConfig"
+            disabled
+          ></ckeditor>
+        </div>
+        <div class="form-group">
+          <label>Created By</label>
+          <input
+            type="text"
+            v-model="created_by"
+            class="form-control"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <label>Created Date</label>
+          <input
+            type="text"
+            v-model="created_at"
+            class="form-control"
+            disabled
+          />
+        </div>
+        <div class="form-group">
+          <button @click="handleBack" class="btn btn-outline-primary">
+            Back
+          </button>
+          <button @click="handleEdit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import { mapActions } from "vuex";
+export default {
+  data() {
+    return {
+      editor: ClassicEditor,
+      editorConfig: {
+        //   plugins:[],
+        toolbar: {
+          //  items:['heading']
+        },
+        language: "id",
+        // The configuration of the editor.
+      },
+      post_date: this.$route.params.post_date,
+      title: this.$route.params.title,
+      category: null,
+      body: null,
+      created_by: null,
+      created_at: null,
+    };
+  },
+  created() {
+    this.getDetail();
+  },
+  methods: {
+    ...mapActions("adminnews", ["viewDetail"]),
+    handleBack() {
+      this.$router.go(-1);
+    },
+    getDetail() {
+      this.viewDetail({ post_date: this.post_date, title: this.title }).then(
+        (result) => {
+          this.body = result.data.body;
+          this.category = result.data.category;
+          this.created_by = result.data.created_by;
+          this.created_at = result.data.created_at;
+        }
+      );
+    },
+    handleEdit() {
+      this.$router.push({
+        name: "admin.news.edit",
+        params: { post_date: this.post_date, title: this.title },
+      });
+    },
+  },
+};
+</script>

@@ -17,4 +17,9 @@ class ProductsController extends Controller
     {
         return Products::find($id);
     }
+
+    public function topFour()
+    {
+        return Products::orderBy('created_at','desc')->take(4)->get();
+    }
 }

@@ -120,10 +120,14 @@
           </a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li>
-                <router-link class="dropdown-item" :to="{name:'admin.setting'}"><i class="fa fa-cog fa-lg"></i> Setting</router-link>
+              <router-link class="dropdown-item" :to="{name:'admin.setting'}">
+                <i class="fa fa-cog fa-lg"></i> Setting
+              </router-link>
             </li>
             <li>
-                <router-link class="dropdown-item" :to="{name:'admin.profile'}"><i class="fa fa-user fa-lg"></i> Profile</router-link>
+              <router-link class="dropdown-item" :to="{name:'admin.profile'}">
+                <i class="fa fa-user fa-lg"></i> Profile
+              </router-link>
             </li>
             <li>
               <a class="dropdown-item" href="#" @click.prevent="logout">
@@ -137,15 +141,17 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
       <div class="app-sidebar__user">
-        <img
-          class="app-sidebar__user-avatar"
-          src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
-          alt="User Image"
-        />
-        <div>
-          <p class="app-sidebar__user-name">John Doe</p>
-          <p class="app-sidebar__user-designation">Frontend Developer</p>
+          <div class="row">
+              <div class="col-sm-4">
+                <h1 class="fa fa-2x fa-user-circle"> </h1>
+              </div>
+              <div class="col-sm-8">
+                    <p class="app-sidebar__user-name" v-if="isLogin">{{ admin.name }}</p>
+                    <p class="app-sidebar__user-designation">Back End</p>
+              </div>
+          </div>
         </div>
+        <div>
       </div>
       <ul class="app-menu">
         <li>
@@ -162,19 +168,46 @@
           </a>
           <ul class="treeview-menu">
             <li>
-                <router-link class="treeview-item" :to="{name:'admin.products.list'}"> <i class="icon fa fa-list"></i> List Products</router-link>
+              <router-link class="treeview-item" :to="{name:'admin.products.list'}">
+                <i class="icon fa fa-list"></i> List Products
+              </router-link>
             </li>
             <li>
-                <router-link class="treeview-item" :to="{name:'admin.products.stock'}"> <i class="icon fa fa-bitbucket"></i> Stock</router-link>
+              <router-link class="treeview-item" :to="{name:'admin.products.stock'}">
+                <i class="icon fa fa-bitbucket"></i> Stock
+              </router-link>
             </li>
-
-
+          </ul>
+        </li>
+        <li class="treeview">
+          <a class="app-menu__item" href="#" data-toggle="treeview">
+            <i class="app-menu__icon fa fa-reorder"></i>
+            <span class="app-menu__label">Orders</span>
+            <i class="treeview-indicator fa fa-angle-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li>
+              <router-link class="treeview-item" :to="{name:'admin.orders.list'}">
+                <i class="icon fa fa-list"></i> List Order
+              </router-link>
+            </li>
+            <li>
+              <router-link class="treeview-item" :to="{name:'admin.orders.invoice'}">
+                <i class="icon fa fa-file-text-o"></i> Invoice
+              </router-link>
+            </li>
           </ul>
         </li>
         <li>
           <router-link class="app-menu__item" :to="{name:'admin.news.list'}">
             <i class="app-menu__icon fa fa-newspaper-o"></i>
             <span class="app-menu__label">News</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link class="app-menu__item" :to="{name:'admin.footer.list'}">
+            <i class="app-menu__icon fa fa-newspaper-o"></i>
+            <span class="app-menu__label">Footer</span>
           </router-link>
         </li>
       </ul>
@@ -186,7 +219,7 @@
   </div>
 </template>
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   mounted() {
@@ -229,12 +262,24 @@ export default {
     // })();
   },
   computed: {
+    ...mapGetters(["loggedIn"]),
     ...mapState({
-      app_name: state => state.app_name
-    })
+      app_name: state => state.app_name,
+      admin: state => state.admin.auth
+    }),
+    isLogin() {
+      let authUser = this.loggedIn;
+      if (authUser) {
+        this.getAdminDetail().catch(error => {
+          this.$router.push({ name: "admin.login" });
+        });
+      }
+      return authUser;
+    }
   },
   methods: {
     ...mapActions("adminlogin", ["adminLogout"]),
+    ...mapActions("admin", ["getAdminDetail"]),
     logout() {
       this.adminLogout().then(response => {
         this.$router.push({ name: "admin.login" });
