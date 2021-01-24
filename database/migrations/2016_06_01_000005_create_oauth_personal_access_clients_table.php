@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblFeedback extends Migration
+class CreateOauthPersonalAccessClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateTblFeedback extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_feedback', function (Blueprint $table) {
+        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50);
-            $table->string('subject', 50);
-            $table->string('email', 50);
-            $table->text('body');
-            $table->string('has_read', 1)->default('N');
+            $table->unsignedBigInteger('client_id');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ class CreateTblFeedback extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_feedback');
+        Schema::dropIfExists('oauth_personal_access_clients');
     }
 }

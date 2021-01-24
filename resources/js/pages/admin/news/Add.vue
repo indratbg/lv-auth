@@ -38,12 +38,15 @@
           </div>
           <div class="form-group">
             <label class="control-label">Category</label>
-            <input
-              class="form-control"
-              type="text"
-              placeholder="Category"
-              v-model="field.category"
-            />
+            <select v-model="field.category" class="form-control col-sm-2">
+              <option
+                v-for="category in categories"
+                :key="category.name"
+                :value="category.value"
+              >
+                {{ category.name }}
+              </option>
+            </select>
           </div>
           <div class="form-group">
             <label class="control-label">Body</label>
@@ -84,10 +87,16 @@ export default {
       },
       field: {
         post_date: this.todayDate(),
-        title: "This is title example",
-        category: "Article",
-        body: "Example of body content",
+        title: null,
+        category: null,
+        body: null,
       },
+      categories: [
+        { name: "Ideas", value: "ideas" },
+        { name: "News", value: "news" },
+        { name: "Promo", value: "promo" },
+      ],
+      category: null,
     };
   },
   methods: {

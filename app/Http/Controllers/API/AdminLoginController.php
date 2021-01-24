@@ -12,9 +12,10 @@ class AdminLoginController extends Controller
 {
     public function login(Request $request)
     {
-        $http = new Client;
 
+        $http = new Client;
         try {
+
             $response = $http->post(config('services.passport.login_endpoint'), [
                 'form_params' => [
                     'grant_type' => 'password',

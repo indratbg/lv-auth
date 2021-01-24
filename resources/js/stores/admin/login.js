@@ -19,10 +19,13 @@ const actions = {
             $axios.post('admin/adminlogin', payload)
                 .then((response) => {
 
-                    localStorage.setItem('token', response.data.access_token)
-                    commit('SET_TOKEN', response.data.access_token, {
-                        root: true
-                    })
+                    if (response.data.access_token) {
+                        localStorage.setItem('token', response.data.access_token)
+                        commit('SET_TOKEN', response.data.access_token, {
+                            root: true
+                        })
+                    }
+
                     resolve(response.data)
                     commit('SET_LOADING', false, {
                         root: true

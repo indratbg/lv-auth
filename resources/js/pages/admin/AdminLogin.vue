@@ -53,7 +53,7 @@
     </section>
     <section class="login-content">
       <div class="logo">
-        <h1>{{app_name}}</h1>
+        <h1>{{ app_name }}</h1>
       </div>
       <div class="login-box">
         <form class="login-form" @submit.prevent="login">
@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       email: "indra.tbg@gmail.com",
-      password: "secret"
+      password: "secret",
     };
   },
   created() {
@@ -108,20 +108,20 @@ export default {
   },
   computed: {
     ...mapState({
-      errors: state => state.errors,
-      app_name: state => state.app_name
+      errors: (state) => state.errors,
+      app_name: (state) => state.app_name,
     }),
-    ...mapGetters(["loggedIn"])
+    ...mapGetters(["loggedIn"]),
   },
   methods: {
     ...mapActions("adminlogin", ["adminLogin"]),
     login() {
       this.adminLogin({ email: this.email, password: this.password }).then(
-        response => {
+        (response) => {
           this.$router.push({ name: "admin.dashboard" });
         }
       );
-    }
-  }
+    },
+  },
 };
 </script>

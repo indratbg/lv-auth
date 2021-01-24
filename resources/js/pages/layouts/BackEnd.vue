@@ -2,9 +2,16 @@
   <div>
     <!-- Navbar-->
     <header class="app-header">
-      <router-link class="app-header__logo" :to="{name:'admin.dashboard' }">{{ app_name }}</router-link>
+      <router-link class="app-header__logo" :to="{ name: 'admin.dashboard' }">{{
+        app_name
+      }}</router-link>
       <!-- Sidebar toggle button-->
-      <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+      <a
+        class="app-sidebar__toggle"
+        href="#"
+        data-toggle="sidebar"
+        aria-label="Hide Sidebar"
+      ></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
         <li class="app-search">
@@ -15,11 +22,18 @@
         </li>
         <!--Notification Menu-->
         <li class="dropdown">
-          <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications">
+          <a
+            class="app-nav__item"
+            href="#"
+            data-toggle="dropdown"
+            aria-label="Show notifications"
+          >
             <i class="fa fa-bell-o fa-lg"></i>
           </a>
           <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">You have 4 new notifications.</li>
+            <li class="app-notification__title">
+              You have 4 new notifications.
+            </li>
             <div class="app-notification__content">
               <li>
                 <a class="app-notification__item" href="javascript:;">
@@ -30,7 +44,9 @@
                     </span>
                   </span>
                   <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
+                    <p class="app-notification__message">
+                      Lisa sent you a mail
+                    </p>
                     <p class="app-notification__meta">2 min ago</p>
                   </div>
                 </a>
@@ -44,7 +60,9 @@
                     </span>
                   </span>
                   <div>
-                    <p class="app-notification__message">Mail server not working</p>
+                    <p class="app-notification__message">
+                      Mail server not working
+                    </p>
                     <p class="app-notification__meta">5 min ago</p>
                   </div>
                 </a>
@@ -58,7 +76,9 @@
                     </span>
                   </span>
                   <div>
-                    <p class="app-notification__message">Transaction complete</p>
+                    <p class="app-notification__message">
+                      Transaction complete
+                    </p>
                     <p class="app-notification__meta">2 days ago</p>
                   </div>
                 </a>
@@ -73,7 +93,9 @@
                       </span>
                     </span>
                     <div>
-                      <p class="app-notification__message">Lisa sent you a mail</p>
+                      <p class="app-notification__message">
+                        Lisa sent you a mail
+                      </p>
                       <p class="app-notification__meta">2 min ago</p>
                     </div>
                   </a>
@@ -87,7 +109,9 @@
                       </span>
                     </span>
                     <div>
-                      <p class="app-notification__message">Mail server not working</p>
+                      <p class="app-notification__message">
+                        Mail server not working
+                      </p>
                       <p class="app-notification__meta">5 min ago</p>
                     </div>
                   </a>
@@ -101,7 +125,9 @@
                       </span>
                     </span>
                     <div>
-                      <p class="app-notification__message">Transaction complete</p>
+                      <p class="app-notification__message">
+                        Transaction complete
+                      </p>
                       <p class="app-notification__meta">2 days ago</p>
                     </div>
                   </a>
@@ -115,17 +141,28 @@
         </li>
         <!-- User Menu-->
         <li class="dropdown">
-          <a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu">
+          <a
+            class="app-nav__item"
+            href="#"
+            data-toggle="dropdown"
+            aria-label="Open Profile Menu"
+          >
             <i class="fa fa-user fa-lg"></i>
           </a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li>
-              <router-link class="dropdown-item" :to="{name:'admin.setting'}">
+              <router-link
+                class="dropdown-item"
+                :to="{ name: 'admin.setting' }"
+              >
                 <i class="fa fa-cog fa-lg"></i> Setting
               </router-link>
             </li>
             <li>
-              <router-link class="dropdown-item" :to="{name:'admin.profile'}">
+              <router-link
+                class="dropdown-item"
+                :to="{ name: 'admin.profile' }"
+              >
                 <i class="fa fa-user fa-lg"></i> Profile
               </router-link>
             </li>
@@ -141,21 +178,25 @@
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
       <div class="app-sidebar__user">
-          <div class="row">
-              <div class="col-sm-4">
-                <h1 class="fa fa-2x fa-user-circle"> </h1>
-              </div>
-              <div class="col-sm-8">
-                    <p class="app-sidebar__user-name" v-if="isLogin">{{ admin.name }}</p>
-                    <p class="app-sidebar__user-designation">Back End</p>
-              </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h1 class="fa fa-2x fa-user-circle"></h1>
+          </div>
+          <div class="col-sm-8">
+            <p class="app-sidebar__user-name" v-if="isLogin">
+              {{ admin.name }}
+            </p>
+            <p class="app-sidebar__user-designation">Back End</p>
           </div>
         </div>
-        <div>
       </div>
+      <div></div>
       <ul class="app-menu">
         <li>
-          <router-link class="app-menu__item active" :to="{ name: 'admin.dashboard' }">
+          <router-link
+            class="app-menu__item active"
+            :to="{ name: 'admin.dashboard' }"
+          >
             <i class="app-menu__icon fa fa-dashboard"></i>
             <span class="app-menu__label">Dashboard</span>
           </router-link>
@@ -168,12 +209,18 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <router-link class="treeview-item" :to="{name:'admin.products.list'}">
+              <router-link
+                class="treeview-item"
+                :to="{ name: 'admin.products.list' }"
+              >
                 <i class="icon fa fa-list"></i> List Products
               </router-link>
             </li>
             <li>
-              <router-link class="treeview-item" :to="{name:'admin.products.stock'}">
+              <router-link
+                class="treeview-item"
+                :to="{ name: 'admin.products.stock' }"
+              >
                 <i class="icon fa fa-bitbucket"></i> Stock
               </router-link>
             </li>
@@ -187,25 +234,34 @@
           </a>
           <ul class="treeview-menu">
             <li>
-              <router-link class="treeview-item" :to="{name:'admin.orders.list'}">
+              <router-link
+                class="treeview-item"
+                :to="{ name: 'admin.orders.list' }"
+              >
                 <i class="icon fa fa-list"></i> List Order
               </router-link>
             </li>
             <li>
-              <router-link class="treeview-item" :to="{name:'admin.orders.invoice'}">
+              <router-link
+                class="treeview-item"
+                :to="{ name: 'admin.orders.invoice' }"
+              >
                 <i class="icon fa fa-file-text-o"></i> Invoice
               </router-link>
             </li>
           </ul>
         </li>
         <li>
-          <router-link class="app-menu__item" :to="{name:'admin.news.list'}">
+          <router-link class="app-menu__item" :to="{ name: 'admin.news.list' }">
             <i class="app-menu__icon fa fa-newspaper-o"></i>
             <span class="app-menu__label">News</span>
           </router-link>
         </li>
         <li>
-          <router-link class="app-menu__item" :to="{name:'admin.footer.list'}">
+          <router-link
+            class="app-menu__item"
+            :to="{ name: 'admin.footer.list' }"
+          >
             <i class="app-menu__icon fa fa-newspaper-o"></i>
             <span class="app-menu__label">Footer</span>
           </router-link>
@@ -229,27 +285,21 @@ export default {
     var treeviewMenu = $(".app-menu");
 
     // Toggle Sidebar
-    $('[data-toggle="sidebar"]').click(function(event) {
+    $('[data-toggle="sidebar"]').click(function (event) {
       event.preventDefault();
       $(".app").toggleClass("sidenav-toggled");
     });
 
     // Activate sidebar treeview toggle
-    $("[data-toggle='treeview']").click(function(event) {
+    $("[data-toggle='treeview']").click(function (event) {
       event.preventDefault();
-      if (
-        !$(this)
-          .parent()
-          .hasClass("is-expanded")
-      ) {
+      if (!$(this).parent().hasClass("is-expanded")) {
         treeviewMenu
           .find("[data-toggle='treeview']")
           .parent()
           .removeClass("is-expanded");
       }
-      $(this)
-        .parent()
-        .toggleClass("is-expanded");
+      $(this).parent().toggleClass("is-expanded");
     });
 
     // Set initial active toggle
@@ -264,27 +314,28 @@ export default {
   computed: {
     ...mapGetters(["loggedIn"]),
     ...mapState({
-      app_name: state => state.app_name,
-      admin: state => state.admin.auth
+      app_name: (state) => state.app_name,
+      admin: (state) => state.admin.auth,
     }),
     isLogin() {
       let authUser = this.loggedIn;
       if (authUser) {
-        this.getAdminDetail().catch(error => {
+        this.getAdminDetail().catch((error) => {
           this.$router.push({ name: "admin.login" });
+          logout();
         });
       }
       return authUser;
-    }
+    },
   },
   methods: {
     ...mapActions("adminlogin", ["adminLogout"]),
     ...mapActions("admin", ["getAdminDetail"]),
     logout() {
-      this.adminLogout().then(response => {
+      this.adminLogout().then((response) => {
         this.$router.push({ name: "admin.login" });
       });
-    }
-  }
+    },
+  },
 };
 </script>

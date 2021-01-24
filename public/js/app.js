@@ -2679,6 +2679,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
  // import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment'
 
 
@@ -2695,10 +2698,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       },
       field: {
         post_date: this.todayDate(),
-        title: "This is title example",
-        category: "Article",
-        body: "Example of body content"
-      }
+        title: null,
+        category: null,
+        body: null
+      },
+      categories: [{
+        name: "Ideas",
+        value: "ideas"
+      }, {
+        name: "News",
+        value: "news"
+      }, {
+        name: "Promo",
+        value: "promo"
+      }],
+      category: null
     };
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])("adminnews", ["saveNews"]), {
@@ -3867,6 +3881,62 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3911,6 +3981,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           _this.$router.push({
             name: "admin.login"
           });
+
+          logout();
         });
       }
 
@@ -68672,27 +68744,53 @@ var render = function() {
                 _vm._v("Category")
               ]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.field.category,
-                    expression: "field.category"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", placeholder: "Category" },
-                domProps: { value: _vm.field.category },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.field.category,
+                      expression: "field.category"
                     }
-                    _vm.$set(_vm.field, "category", $event.target.value)
+                  ],
+                  staticClass: "form-control col-sm-2",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.field,
+                        "category",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
-                }
-              })
+                },
+                _vm._l(_vm.categories, function(category) {
+                  return _c(
+                    "option",
+                    { key: category.name, domProps: { value: category.value } },
+                    [
+                      _vm._v(
+                        "\n              " +
+                          _vm._s(category.name) +
+                          "\n            "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
             ]),
             _vm._v(" "),
             _c(
@@ -70278,7 +70376,9 @@ var render = function() {
           _c("div", { staticClass: "col-sm-8" }, [
             _vm.isLogin
               ? _c("p", { staticClass: "app-sidebar__user-name" }, [
-                  _vm._v(_vm._s(_vm.admin.name))
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.admin.name) + "\n          "
+                  )
                 ])
               : _vm._e(),
             _vm._v(" "),
@@ -70486,7 +70586,7 @@ var staticRenderFns = [
         { staticClass: "app-notification dropdown-menu dropdown-menu-right" },
         [
           _c("li", { staticClass: "app-notification__title" }, [
-            _vm._v("You have 4 new notifications.")
+            _vm._v("\n            You have 4 new notifications.\n          ")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "app-notification__content" }, [
@@ -70512,7 +70612,9 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", [
                     _c("p", { staticClass: "app-notification__message" }, [
-                      _vm._v("Lisa sent you a mail")
+                      _vm._v(
+                        "\n                    Lisa sent you a mail\n                  "
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "app-notification__meta" }, [
@@ -70545,7 +70647,9 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", [
                     _c("p", { staticClass: "app-notification__message" }, [
-                      _vm._v("Mail server not working")
+                      _vm._v(
+                        "\n                    Mail server not working\n                  "
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "app-notification__meta" }, [
@@ -70578,7 +70682,9 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("div", [
                     _c("p", { staticClass: "app-notification__message" }, [
-                      _vm._v("Transaction complete")
+                      _vm._v(
+                        "\n                    Transaction complete\n                  "
+                      )
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "app-notification__meta" }, [
@@ -70612,7 +70718,9 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", [
                       _c("p", { staticClass: "app-notification__message" }, [
-                        _vm._v("Lisa sent you a mail")
+                        _vm._v(
+                          "\n                      Lisa sent you a mail\n                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "app-notification__meta" }, [
@@ -70645,7 +70753,9 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", [
                       _c("p", { staticClass: "app-notification__message" }, [
-                        _vm._v("Mail server not working")
+                        _vm._v(
+                          "\n                      Mail server not working\n                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "app-notification__meta" }, [
@@ -70678,7 +70788,9 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("div", [
                       _c("p", { staticClass: "app-notification__message" }, [
-                        _vm._v("Transaction complete")
+                        _vm._v(
+                          "\n                      Transaction complete\n                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "app-notification__meta" }, [
@@ -95214,6 +95326,8 @@ var mutations = {
 };
 var actions = {
   getAdminDetail: function getAdminDetail(_ref) {
+    var _this = this;
+
     var state = _ref.state,
         commit = _ref.commit;
     return new Promise(function (resolve, reject) {
@@ -95228,6 +95342,7 @@ var actions = {
           });
         }
 
+        console.log(_this);
         reject(error);
       });
     });
@@ -95511,10 +95626,13 @@ var actions = {
               _context.next = 4;
               return new Promise(function (resolve, reject) {
                 _api_js__WEBPACK_IMPORTED_MODULE_1__["default"].post('admin/adminlogin', payload).then(function (response) {
-                  localStorage.setItem('token', response.data.access_token);
-                  commit('SET_TOKEN', response.data.access_token, {
-                    root: true
-                  });
+                  if (response.data.access_token) {
+                    localStorage.setItem('token', response.data.access_token);
+                    commit('SET_TOKEN', response.data.access_token, {
+                      root: true
+                    });
+                  }
+
                   resolve(response.data);
                   commit('SET_LOADING', false, {
                     root: true

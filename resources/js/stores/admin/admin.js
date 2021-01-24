@@ -29,6 +29,7 @@ const actions = {
                             root: true
                         })
                     }
+                    console.log(this)
                     reject(error);
                 })
         });
