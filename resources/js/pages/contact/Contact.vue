@@ -9,12 +9,11 @@
             <div class="col-md-5">
               <input
                 type="text"
-               class="form-control"
+                class="form-control"
                 id="inputName"
                 placeholder="Name"
                 v-model="name"
               />
-
             </div>
           </div>
           <div class="form-group row">
@@ -28,7 +27,6 @@
                 autocomplete="off"
                 v-model="subject"
               />
-
             </div>
           </div>
           <div class="form-group row">
@@ -36,13 +34,12 @@
             <div class="col-md-5">
               <input
                 type="email"
-               class="form-control"
+                class="form-control"
                 id="email"
                 placeholder="Email"
                 autocomplete="off"
                 v-model="email"
               />
-
             </div>
           </div>
           <div class="form-group row">
@@ -51,10 +48,9 @@
               <textarea
                 id="body"
                 rows="3"
-               class="form-control"
+                class="form-control"
                 v-model="body"
               ></textarea>
-
             </div>
           </div>
           <div class="form-group row">
@@ -73,10 +69,10 @@ import { mapActions } from "vuex";
 export default {
   data() {
     return {
-      name: "Indra Tobing",
-      email: "indra.tbg@gmail.com",
-      subject: "Testing Feedback",
-      body: "Ini adalah body feedback"
+      name: null,
+      email: null,
+      subject: null,
+      body: null,
     };
   },
   methods: {
@@ -86,9 +82,9 @@ export default {
         name: this.name,
         email: this.email,
         subject: this.subject,
-        body: this.body
+        body: this.body,
       });
-    }
-  }
+    },
+  },
 };
 </script>

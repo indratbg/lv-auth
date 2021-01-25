@@ -16,7 +16,7 @@ Route::get('/{any}', 'FrontController@index')->where('any', '.*');
 //     return view('welcome');
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
-// Auth::routes(['verify'=>true]);
+Auth::routes(['verify' => true]);
 
 Route::post('socialregister/{provider}', 'AuthController@SocialSignup');
 Route::post('sociallogin/{provider}', 'AuthController@SocialLogin');

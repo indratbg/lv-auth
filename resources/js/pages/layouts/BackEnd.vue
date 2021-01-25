@@ -211,9 +211,17 @@
             <li>
               <router-link
                 class="treeview-item"
-                :to="{ name: 'admin.products.list' }"
+                :to="{ name: 'admin.product.list' }"
               >
                 <i class="icon fa fa-list"></i> List Products
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                class="treeview-item"
+                :to="{ name: 'admin.product.add' }"
+              >
+                <i class="icon fa fa-plus"></i> Add Product
               </router-link>
             </li>
             <li>

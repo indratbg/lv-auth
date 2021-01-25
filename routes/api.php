@@ -79,5 +79,16 @@ Route::group(['prefix' => 'admin'], function () {
 
         //FOoter
         Route::post('footer/store', 'API\FooterController@store');
+        Route::get('footer/getFooters', 'API\FooterController@getFooters');
+        Route::get('footer/show/{id}', 'API\FooterController@show');
+        Route::post('footer/update/{id}', 'API\FooterController@update');
+        Route::delete('footer/delete/{id}', 'API\FooterController@destroy');
+
+        //Product
+        Route::get('product/index', 'API\ProductController@index');
+        Route::post('product/store', 'API\ProductController@store');
+        Route::delete('product/delete/{id}', 'API\ProductController@destroy');
+        Route::get('product/view/{id}', 'API\ProductController@show');
+        Route::post('product/update/{id}', 'API\ProductController@update');
     });
 });

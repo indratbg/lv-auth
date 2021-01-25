@@ -24,7 +24,7 @@ const actions = {
                     resolve(response)
                 })
                 .catch(error => {
-                    console.log(error)
+
                     if (error.response) {
                         commit('SET_ERRORS', error.response.data, {
                             root: true
@@ -41,7 +41,7 @@ const actions = {
         return await new Promise((resolve, reject) => {
             $axios.get('admin/news/getEditableNews')
                 .then((response) => {
-                    //console.log(response.data)
+                    console.log(response)
                     commit('SET_NEWS_LIST', response.data)
                     commit('SET_LOADING', false, {
                         root: true

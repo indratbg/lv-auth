@@ -45,6 +45,8 @@ import AdminNewsView from "./pages/admin/news/View.vue";
 import AdminFooter from "./pages/admin/footer/Footer.vue";
 import AdminFooterList from "./pages/admin/footer/List.vue";
 import AdminFooterAdd from "./pages/admin/footer/Add.vue";
+import AdminFooterView from "./pages/admin/footer/View.vue";
+import AdminFooterEdit from "./pages/admin/footer/Edit.vue";
 
 //Setting
 import AdminSetting from "./pages/admin/setting/Setting.vue";
@@ -56,6 +58,9 @@ import AdminProfile from "./pages/admin/profile/Profile.vue";
 import AdminProducts from "./pages/admin/products/Products.vue";
 import AdminProductsList from "./pages/admin/products/List.vue";
 import AdminProductsStock from "./pages/admin/products/Stock.vue";
+import AdminProductAdd from "./pages/admin/products/Add.vue";
+import AdminProductview from "./pages/admin/products/View.vue";
+import AdminProductEdit from "./pages/admin/products/Edit.vue";
 
 //Orders
 import AdminOrders from "./pages/admin/orders/Order.vue";
@@ -199,6 +204,46 @@ const router = new Router({
                     }
                 },
                 {
+                    path: "product",
+                    component: AdminProducts,
+                    meta: {
+                        layout: "backend-layout"
+                    },
+                    children: [{
+                            path: "list",
+                            component: AdminProductsList,
+                            name: 'admin.product.list',
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "add",
+                            component: AdminProductAdd,
+                            name: 'admin.product.add',
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "view/:id",
+                            component: AdminProductview,
+                            name: 'admin.product.view',
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "edit/:id",
+                            component: AdminProductEdit,
+                            name: 'admin.product.edit',
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        }
+                    ]
+                },
+                {
                     path: "footer",
                     component: AdminFooter,
                     meta: {
@@ -216,6 +261,22 @@ const router = new Router({
                             path: "add",
                             name: "admin.footer.add",
                             component: AdminFooterAdd,
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "view/:id",
+                            name: "admin.footer.view",
+                            component: AdminFooterView,
+                            meta: {
+                                layout: "backend-layout"
+                            }
+                        },
+                        {
+                            path: "edit/:id",
+                            name: "admin.footer.edit",
+                            component: AdminFooterEdit,
                             meta: {
                                 layout: "backend-layout"
                             }
