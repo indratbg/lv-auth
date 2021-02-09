@@ -42,6 +42,11 @@ Route::group(['prefix' => 'products'], function () {
     Route::get('/{id}', 'API\ProductsController@show');
 });
 
+//IMAGES
+Route::group(['prefix' => 'image'], function () {
+    Route::get('/{id_product}', 'API\ImageProductController@show');
+});
+
 Route::get('topFour', 'API\ProductsController@topFour');
 
 Route::get('footer/{type}', 'API\FooterController@footer');
@@ -90,5 +95,10 @@ Route::group(['prefix' => 'admin'], function () {
         Route::delete('product/delete/{id}', 'API\ProductController@destroy');
         Route::get('product/view/{id}', 'API\ProductController@show');
         Route::post('product/update/{id}', 'API\ProductController@update');
+
+        //Images
+        Route::post('images/store', 'API\ImageProductController@store');
+        Route::get('images/show/{id_product}', 'API\ImageProductController@show');
+        Route::get('images/delete/{id_product}', 'API\ImageProductController@destroy');
     });
 });

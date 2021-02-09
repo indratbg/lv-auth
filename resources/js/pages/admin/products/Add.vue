@@ -29,6 +29,8 @@
               type="text"
               v-model="field.price"
               class="form-control col-sm-2"
+              v-on:change="formatNumber"
+              style="text-align: right"
             />
           </div>
           <div class="form-group">
@@ -39,6 +41,39 @@
               class="form-control col-sm-2"
             />
           </div>
+          .
+          <div class="form-group">
+            <label for="">Images</label>
+            <div class="row">
+              <div
+                class="col-sm-3"
+                v-for="(image, index) in imageUrl"
+                :key="index"
+              >
+                <div class="m-2">
+                  <img :src="image" class="img-thumbnail" height="100px" />
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <span
+                  class="btnAddImage"
+                  @click="$refs.addImage.click()"
+                  style="cursor: pointer"
+                >
+                  <i class="fa fa-2x fa-plus" aria-hidden="true"></i>
+                  Add Image
+                </span>
+                <input
+                  type="file"
+                  accept="image/*"
+                  ref="addImage"
+                  style="display: none"
+                  v-on:change="imageSelected"
+                />
+              </div>
+            </div>
+          </div>
+
           <div class="form-group">
             <label>Description</label>
             <ckeditor
@@ -58,9 +93,23 @@
     </div>
   </div>
 </template>
+<style scoped>
+img {
+  height: 150px;
+  width: 100%;
+}
+.btnAddImage {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+</style>
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { mapActions } from "vuex";
+import numeral from "numeral";
 export default {
   data() {
     return {
@@ -73,18 +122,44 @@ export default {
         language: "id",
         // The configuration of the editor.
       },
-      field: { product: null, price: null, tags: null, desc: null },
+      field: { product: null, price: 0, tags: null, desc: null, images: [] },
+      images: [],
+      imageUrl: [],
     };
   },
   methods: {
-    ...mapActions("adminproduct", ["save"]),
+    ...mapActions("adminproduct", ["save", "uploadImages"]),
     handleSubmit() {
+      this.field.price = this.field.price.replace(/,/g, "");
       this.save(this.field).then((result) => {
+        //insert images
+        let formData = new FormData();
+        formData.append("id_product", result.data.id);
+        $.each(this.images, function (index, image) {
+          formData.append("images[" + index + "]", image);
+        });
+
+        this.uploadImages(formData);
+
         this.$router.push({ name: "admin.product.list" });
       });
     },
     handleBack() {
       this.$router.go(-1);
+    },
+    imageSelected(e) {
+      const file = e.target.files[0];
+      if (file.size / 1024 > 2048) {
+        alert("Max size of file : 2 Mb");
+      } else {
+        if (file) {
+          this.imageUrl.push(URL.createObjectURL(file));
+          this.images.push(file);
+        }
+      }
+    },
+    formatNumber() {
+      this.field.price = numeral(this.field.price).format("0,0");
     },
   },
 };

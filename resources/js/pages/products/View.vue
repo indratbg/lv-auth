@@ -2,18 +2,16 @@
   <div>
     <div class="card">
       <div class="card-body">
-        <div class="row">
-          <div class="col-md-4">
-            <img :src="image" class="card-img" />
-          </div>
-          <div class="col-md-8">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{ product.product}}</li>
-              <li class="list-group-item">{{ product.price }}</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-          </div>
-        </div>
+        <!-- component -->
+        <viewer :options="options" :images="images">
+          <img
+            v-for="src in images"
+            :src="src"
+            :key="src"
+            class="image img-responsive"
+          />
+        </viewer>
+
         <div class="mt-4">
           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
@@ -25,7 +23,8 @@
                 role="tab"
                 aria-controls="pills-home"
                 aria-selected="true"
-              >Description</a>
+                >Description</a
+              >
             </li>
             <li class="nav-item">
               <a
@@ -36,7 +35,8 @@
                 role="tab"
                 aria-controls="pills-profile"
                 aria-selected="false"
-              >Comments</a>
+                >Comments</a
+              >
             </li>
             <li class="nav-item">
               <a
@@ -47,7 +47,8 @@
                 role="tab"
                 aria-controls="pills-contact"
                 aria-selected="false"
-              >Contact</a>
+                >Contact</a
+              >
             </li>
           </ul>
           <div class="tab-content" id="pills-tabContent">
@@ -56,41 +57,87 @@
               id="pills-home"
               role="tabpanel"
               aria-labelledby="pills-home-tab"
-            >...</div>
+            >
+              <p v-html="product.desc"></p>
+            </div>
             <div
               class="tab-pane fade"
               id="pills-profile"
               role="tabpanel"
               aria-labelledby="pills-profile-tab"
-            >...</div>
+            >
+              ...
+            </div>
             <div
               class="tab-pane fade"
               id="pills-contact"
               role="tabpanel"
               aria-labelledby="pills-contact-tab"
-            >...</div>
+            >
+              ...
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+<style scoped>
+.image {
+  height: 100px;
+  cursor: pointer;
+  margin: 5px;
+  display: inline-block;
+}
+</style>
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
+  data() {
+    return {
+      id_product: this.$route.params.id,
+      //images: [],
+      images: [],
+      options: {
+        inline: false,
+        button: true,
+        navbar: true,
+        title: true,
+        toolbar: true,
+        tooltip: true,
+        movable: true,
+        zoomable: true,
+        rotatable: true,
+        scalable: true,
+        transition: true,
+        fullscreen: true,
+        keyboard: true,
+      },
+    };
+  },
   created() {
     this.getProductbyId(this.$route.params.id);
+    this.getImage();
   },
   computed: {
     ...mapState({
-      product: state => state.products.detail_products
+      product: (state) => state.products.detail_products,
     }),
     image() {
       return this.product.img_thumbnail;
-    }
+    },
   },
   methods: {
-    ...mapActions("products", ["getProductbyId"])
-  }
+    ...mapActions("products", ["getProductbyId", "getImagesbyProduct"]),
+    getImage() {
+      this.getImagesbyProduct(this.id_product).then((result) => {
+        let image = [];
+        $.each(result.data, function (index, item) {
+          image.push("/storage/" + item.category + "/" + item.filename);
+        });
+        this.images = image;
+      });
+    },
+  },
 };
 </script>

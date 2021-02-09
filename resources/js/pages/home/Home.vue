@@ -11,51 +11,53 @@
         <h3>Top Products</h3>
         <hr />
         <div class="row">
-
-          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-12" v-for="(item, index) in data" :key="index">
+          <div
+            class="col-xl-3 col-lg-4 col-md-5 col-sm-12"
+            v-for="(item, index) in data"
+            :key="index"
+          >
             <div class="card m-2">
               <img
+                :src="'/storage/' + item.category + '/' + item.filename"
                 class="card-img-top"
-                src="https://placekitten.com/300/250"
-                alt
                 width="239"
                 height="200"
               />
+
               <div class="card-body">
                 <h4 class="card-title">
-                <router-link :to="{ 'name':'products.view', params:{id:item.id} }">{{ item.product}}</router-link>
+                  <router-link
+                    :to="{ name: 'products.view', params: { id: item.id } }"
+                    >{{ item.product }}</router-link
+                  >
                 </h4>
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex';
+import { mapActions } from "vuex";
 export default {
-    data(){
-        return {
-            data:[]
-        }
+  data() {
+    return {
+      data: [],
+    };
+  },
+  created() {
+    this.setData();
+  },
+  methods: {
+    ...mapActions("home", ["getTopFour"]),
+    setData() {
+      this.getTopFour().then((responses) => {
+        this.data = responses.data;
+      });
     },
-    created(){
-    this.setData()
-    },
-    methods:
-    {
-       ...mapActions("home",["getTopFour"]),
-       setData()
-       {
-           this.getTopFour().then((responses)=>{
-               this.data = responses.data;
-           })
-       }
-    }
+  },
 };
 </script>
 <style scoped>

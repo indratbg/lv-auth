@@ -63,7 +63,19 @@ Vue.use(BeeGridTable, {
 
 Vue.config.productionTip = false;
 
+// import '@morioh/v-lightbox/dist/lightbox.css';
+// import Lightbox from '@morioh/v-lightbox'
 
+// // global register
+// Vue.use(Lightbox);
+
+import 'viewerjs/dist/viewer.css'
+import Viewer from 'ice-vue-viewer'
+
+Vue.use(Viewer)
+
+
+import numeral from 'numeral';
 
 new Vue({
     el: "#app",

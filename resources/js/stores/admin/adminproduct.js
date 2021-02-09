@@ -117,6 +117,70 @@ const actions = {
                     reject(error);
                 })
         })
+    },
+    uploadImages({
+        state,
+        commit
+    }, payload) {
+        return new Promise((resolve, reject) => {
+
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            };
+            $axios.post('admin/images/store', payload, config)
+                .then((response) => {
+
+
+                    resolve(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                    if (error.response) {
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        })
+                    }
+                    reject(error);
+                })
+        })
+    },
+    imagesProduct({ state, commit }, payload) {
+        return new Promise((resolve, reject) => {
+
+            $axios.get(`admin/images/show/${payload.id_product}`)
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                    if (error.response) {
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        })
+                    }
+                    reject(error);
+                })
+        })
+    },
+    deleteImage({ state, commit }, payload) {
+        return new Promise((resolve, reject) => {
+
+            $axios.get(`admin/images/delete/${payload}`)
+                .then((response) => {
+                    resolve(response)
+                })
+                .catch(error => {
+                    console.log(error)
+                    if (error.response) {
+                        commit('SET_ERRORS', error.response.data, {
+                            root: true
+                        })
+                    }
+                    reject(error);
+                })
+        })
     }
 }
 

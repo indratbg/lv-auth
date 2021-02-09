@@ -9,4 +9,10 @@ class Products extends Model
     protected $table = 'tbl_products';
     protected $fillable = ['product', 'tags', 'desc', 'created_at', 'updated_at'];
     protected $perPage = 12;
+
+
+    public function images()
+    {
+        return $this->hasMany('App\ImageProducts');
+    }
 }

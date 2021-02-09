@@ -39,6 +39,17 @@
           <input type="text" v-model="tags" class="form-control" disabled />
         </div>
         <div class="form-group">
+          <label for="">Images</label>
+          <div class="row">
+            <div class="col-sm-3" v-for="image in images" :key="image.id">
+              <img
+                :src="'/storage/' + image.category + '/' + image.filename"
+                class="img-thumbnail"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
           <label>Description</label>
 
           <ckeditor
@@ -68,6 +79,12 @@
     </div>
   </div>
 </template>
+<style scoped>
+img {
+  height: 150px;
+  width: 100%;
+}
+</style>
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { mapActions } from "vuex";
@@ -89,13 +106,15 @@ export default {
       tags: null,
       desc: null,
       created_at: null,
+      images: [],
     };
   },
   created() {
     this.getDetail();
+    this.getImages();
   },
   methods: {
-    ...mapActions("adminproduct", ["show"]),
+    ...mapActions("adminproduct", ["show", "imagesProduct"]),
     handleBack() {
       this.$router.go(-1);
     },
@@ -106,6 +125,12 @@ export default {
         this.tags = result.data.tags;
         this.desc = result.data.desc;
         this.created_at = result.data.created_at;
+      });
+    },
+    getImages() {
+      this.imagesProduct({ id_product: this.id }).then((result) => {
+        this.images = result.data;
+        console.log(this.images);
       });
     },
     handleEdit() {

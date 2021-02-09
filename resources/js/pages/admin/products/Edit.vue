@@ -33,6 +33,43 @@
             <input type="text" v-model="tags" class="form-control col-sm-2" />
           </div>
           <div class="form-group">
+            <label for="">Images</label>
+
+            <div class="row">
+              <div
+                class="col-sm-3"
+                v-for="(image, index) in images"
+                :key="image.id"
+              >
+                <img
+                  :src="'/storage/' + image.category + '/' + image.filename"
+                  class="img-thumbnail"
+                  width="100%"
+                />
+                <a class="topright text-danger" @click="deleteImg(image.id)"
+                  ><i class="fa fa-2x fa-times" aria-hidden="true"></i
+                ></a>
+              </div>
+              <div class="col-sm-3">
+                <i
+                  class="fa fa-2x fa-plus text-primary"
+                  style="cursor: pointer"
+                  aria-hidden="true"
+                  @click="$refs.addImage.click()"
+                >
+                  Add Image</i
+                >
+                <input
+                  type="file"
+                  accept="image/*"
+                  style="display: none"
+                  ref="addImage"
+                  v-on:change="addImage"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
             <label>Description</label>
 
             <ckeditor
@@ -53,6 +90,18 @@
     </div>
   </div>
 </template>
+<style scoped>
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 20px;
+  font-size: 18px;
+}
+img {
+  height: 150px;
+  width: 100%;
+}
+</style>
 <script>
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { mapActions } from "vuex";
@@ -74,13 +123,21 @@ export default {
       tags: null,
       desc: null,
       created_at: null,
+      images: [],
     };
   },
   created() {
     this.getDetail();
+    this.getImages();
   },
   methods: {
-    ...mapActions("adminproduct", ["show", "update"]),
+    ...mapActions("adminproduct", [
+      "show",
+      "update",
+      "imagesProduct",
+      "deleteImage",
+      "uploadImages",
+    ]),
     handleBack() {
       this.$router.push({ name: "admin.product.list" });
     },
@@ -95,6 +152,11 @@ export default {
         this.created_at = result.data.created_at;
       });
     },
+    getImages() {
+      this.imagesProduct({ id_product: this.id }).then((result) => {
+        this.images = result.data;
+      });
+    },
     handleUpdate() {
       this.update({
         id: this.id,
@@ -105,6 +167,23 @@ export default {
       }).then((response) => {
         this.$router.push({ name: "admin.product.list" });
       });
+    },
+    deleteImg(id) {
+      this.deleteImage(id).then((result) => {
+        this.getImages();
+      });
+    },
+    addImage(e) {
+      const file = e.target.files[0];
+      if (file) {
+        //insert images
+        let formData = new FormData();
+        formData.append("id_product", this.id);
+        formData.append("images[0]", file);
+        this.uploadImages(formData).then((result) => {
+          this.getImages();
+        });
+      }
     },
   },
 };

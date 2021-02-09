@@ -67,6 +67,27 @@ const actions = {
                     reject(error)
                 })
         })
+    },
+    getImagesbyProduct({
+        state,
+        commit
+    }, payload) {
+        commit('SET_LOADING', true, {
+            root: true
+        })
+        return new Promise((resolve, reject) => {
+
+            $axios.get(`/image/${payload}`)
+                .then((response) => {
+                    commit('SET_LOADING', false, {
+                        root: true
+                    })
+                    resolve(response)
+                })
+                .catch(error => {
+                    reject(error)
+                })
+        })
     }
 }
 
